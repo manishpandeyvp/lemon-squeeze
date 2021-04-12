@@ -7,13 +7,49 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:cardCornerRadius="10dp"
+        android:background="@android:color/holo_orange_light"
+        app:cardBackgroundColor="@android:color/holo_orange_light"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        app:cardElevation="10dp"
+        android:layout_marginEnd="50dp"
+        tools:layout_editor_absoluteX="30dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="50dp"
+                android:layout_marginStart="15dp"
+                android:fadeScrollbars="false"
+                android:gravity="left|center_vertical"
+                android:hint="Search Juices and Shakes"
+                android:textCursorDrawable="@drawable/custom_cursor"
+                android:textColorHint="@android:color/holo_red_dark"
+                android:background="@android:color/transparent"
+                android:inputType="text"
+                android:paddingStart="15dp"
+                android:paddingLeft="15dp" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginStart="7dp"
+                android:src="@drawable/ic_search_black_24dp"/>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
 
 </LinearLayout>

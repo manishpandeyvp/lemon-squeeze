@@ -17,8 +17,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="lassi"
-        android:textSize="60sp"
-        android:layout_marginTop="50dp"
+        android:textSize="90sp"
+        android:layout_marginTop="90dp"
         android:gravity="center_horizontal"
         android:textColor="@android:color/black"/>
 

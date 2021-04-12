@@ -1,8 +1,10 @@
 package com.example.lassi
 
+import android.content.Intent
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.view.WindowManager
 import kotlinx.android.synthetic.main.activity_splash_screen.*
 
@@ -19,5 +21,9 @@ class SplashScreenActivity : AppCompatActivity() {
 
         val typeFace : Typeface = Typeface.createFromAsset(assets, "Sacramento-Regular.ttf")
         tv_app_name.typeface = typeFace
+
+        Handler().postDelayed({
+            startActivity(Intent(this,MainActivity::class.java))
+        }, 1500)
     }
 }
