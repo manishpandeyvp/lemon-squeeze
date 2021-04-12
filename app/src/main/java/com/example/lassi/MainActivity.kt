@@ -17,12 +17,16 @@ class MainActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
 
-        val typeFace : Typeface = Typeface.createFromAsset(assets, "Quicksand-VariableFont_wght.ttf")
-        et_search.typeface = typeFace
-        tv_all.typeface = typeFace
-        tv_cold_shakes.typeface = typeFace
-        tv_juices.typeface = typeFace
-        tv_wishes.typeface = typeFace
+        val typeFaceRegular : Typeface = Typeface.createFromAsset(assets, "Quicksand-Regular.ttf")
+        val typeFaceBold : Typeface = Typeface.createFromAsset(assets, "Quicksand-Bold.ttf")
+        val typeFaceSemiBold : Typeface = Typeface.createFromAsset(assets, "Quicksand-SemiBold.ttf")
+        et_search.typeface = typeFaceRegular
+        tv_all.typeface = typeFaceSemiBold
+        tv_cold_shakes.typeface = typeFaceSemiBold
+        tv_juices.typeface = typeFaceSemiBold
+        tv_wishes.typeface = typeFaceBold
+        tv_lorem1.typeface = typeFaceBold
+        tv_lorem2.typeface = typeFaceBold
     }
 
 
