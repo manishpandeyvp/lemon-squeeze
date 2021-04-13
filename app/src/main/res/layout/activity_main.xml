@@ -14,46 +14,71 @@
         android:orientation="vertical"
         android:padding="15dp">
 
-        <androidx.cardview.widget.CardView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            app:cardCornerRadius="15dp"
-            android:background="@color/light_green"
-            app:cardBackgroundColor="@color/light_green"
-            tools:layout_editor_absoluteX="30dp">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:gravity="center_vertical">
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                app:cardCornerRadius="15dp"
+                android:background="@color/light_green"
+                app:cardBackgroundColor="@color/light_green"
+                tools:layout_editor_absoluteX="30dp">
 
-                <EditText
-                    android:id="@+id/et_search"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="15dp"
-                    android:fadeScrollbars="false"
-                    android:gravity="left|center_vertical"
-                    android:hint="Search Juices and Shakes"
-                    android:textCursorDrawable="@drawable/custom_cursor"
-                    android:textColorHint="@color/dark_green"
-                    android:background="@android:color/transparent"
-                    android:inputType="text"
-                    android:textColor="@color/dark_green"
-                    android:paddingStart="15dp"
-                    android:paddingLeft="15dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <EditText
+                        android:id="@+id/et_search"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="15dp"
+                        android:fadeScrollbars="false"
+                        android:gravity="left|center_vertical"
+                        android:hint="Search Juices and Shakes"
+                        android:textCursorDrawable="@drawable/custom_cursor"
+                        android:textColorHint="@color/dark_green"
+                        android:background="@android:color/transparent"
+                        android:inputType="text"
+                        android:textColor="@color/dark_green"
+                        android:paddingStart="15dp"
+                        android:paddingLeft="15dp" />
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginEnd="12dp"
+                        android:layout_marginStart="7dp"
+                        android:src="@drawable/ic_search_black_24dp"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:cardCornerRadius="15dp"
+                android:layout_marginStart="15dp"
+                tools:layout_editor_absoluteX="30dp">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginEnd="12dp"
-                    android:layout_marginStart="7dp"
-                    android:src="@drawable/ic_search_black_24dp"/>
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/menu"/>
 
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+
 
         <TextView
             android:id="@+id/tv_wishes"
@@ -179,7 +204,8 @@
 
                 <TextView
                     android:id="@+id/tv_lorem1"
-                    android:layout_width="wrap_content"
+                    android:layout_width="175dp"
+                    android:gravity="center"
                     android:layout_height="wrap_content"
                     android:text="Lorem Ipsum"
                     android:textSize="18dp"
@@ -226,8 +252,18 @@
             </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/tv_new_arrival"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="New Arrival"
+            android:textStyle="bold"
+            android:textColor="@color/dark_green"
+            android:textSize="20dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
@@ -255,136 +291,39 @@
                         android:outlineProvider="background"/>
 
                 </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="15dp"
+                android:gravity="center">
 
                 <TextView
                     android:id="@+id/tv_lorem3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Lorem Ipsum"
+                    android:gravity="center"
+                    android:text="Lorem Ipsum Lorem Ipsum"
                     android:textSize="18dp"
                     android:textStyle="bold"
                     android:textColor="@color/dark_green"
                     android:layout_marginTop="5dp"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="15dp"
-                android:gravity="center_horizontal">
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="175dp"
-                    android:layout_height="250dp"
-                    app:cardCornerRadius="20dp"
-                    android:background="@color/light_orange"
-                    app:cardBackgroundColor="@color/light_orange"
-                    tools:layout_editor_absoluteX="30dp">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/img2"
-                        android:scaleType="centerCrop"
-                        android:background="@drawable/image_container"
-                        android:outlineProvider="background"/>
-
-                </androidx.cardview.widget.CardView>
 
                 <TextView
                     android:id="@+id/tv_lorem4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Lorem Ipsum"
-                    android:textSize="18dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/dark_green"
-                    android:layout_marginTop="5dp"/>
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="10dp"
-                android:gravity="center_horizontal">
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="175dp"
-                    android:layout_height="250dp"
-                    app:cardCornerRadius="20dp"
-                    android:background="@color/light_green"
-                    app:cardBackgroundColor="@color/light_green"
-                    tools:layout_editor_absoluteX="30dp">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/img1"
-                        android:scaleType="centerCrop"
-                        android:background="@drawable/image_container"
-                        android:outlineProvider="background"/>
-
-                </androidx.cardview.widget.CardView>
-
-                <TextView
-                    android:id="@+id/tv_lorem5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Lorem Ipsum"
-                    android:textSize="18dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/dark_green"
-                    android:layout_marginTop="5dp"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="15dp"
-                android:gravity="center_horizontal">
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="175dp"
-                    android:layout_height="250dp"
-                    app:cardCornerRadius="20dp"
-                    android:background="@color/light_orange"
-                    app:cardBackgroundColor="@color/light_orange"
-                    tools:layout_editor_absoluteX="30dp">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/img2"
-                        android:scaleType="centerCrop"
-                        android:background="@drawable/image_container"
-                        android:outlineProvider="background"/>
-
-                </androidx.cardview.widget.CardView>
-
-                <TextView
-                    android:id="@+id/tv_lorem6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Lorem Ipsum"
-                    android:textSize="18dp"
-                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:text="Try this out!"
+                    android:textSize="14dp"
                     android:textColor="@color/dark_green"
                     android:layout_marginTop="5dp"/>
             </LinearLayout>
         </LinearLayout>
-
 
     </LinearLayout>
 
