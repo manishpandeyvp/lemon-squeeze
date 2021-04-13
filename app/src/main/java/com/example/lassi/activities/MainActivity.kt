@@ -1,5 +1,6 @@
 package com.example.lassi.activities
 
+import android.content.Intent
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -40,6 +41,9 @@ class MainActivity : AppCompatActivity() {
         displayWishes()
         getJuiceAndShakesList()
 
+        ll_new_arrival.setOnClickListener {
+            startActivity(Intent(this, JuiceAndShakeRecipeActivity::class.java))
+        }
     }
 
     private fun getJuiceAndShakesList(){

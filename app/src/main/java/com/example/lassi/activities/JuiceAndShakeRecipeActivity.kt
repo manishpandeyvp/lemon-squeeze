@@ -2,6 +2,7 @@ package com.example.lassi.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.lassi.R
 
 class JuiceAndShakeRecipeActivity : AppCompatActivity() {
 
