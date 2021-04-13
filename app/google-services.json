@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "953793593155",
+    "project_id": "lemon-squeeze",
+    "storage_bucket": "lemon-squeeze.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:953793593155:android:09b925ef32f88e3fbfb9f6",
+        "android_client_info": {
+          "package_name": "com.example.lassi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "953793593155-dqj3f63mdt5bfgd34te10va2pt9chu68.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD65YIXEOMJm4MofxbPCgSyf3X1cwCwBE4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "953793593155-dqj3f63mdt5bfgd34te10va2pt9chu68.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
