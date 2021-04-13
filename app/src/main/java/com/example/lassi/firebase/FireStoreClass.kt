@@ -19,7 +19,7 @@ class FireStoreClass {
                 juiceAndShakesList.add(juiceAndShake)
             }
 
-            // Call populateJuiceAndShakesListUI fun here declared in Main Activity
+            activity.updateJuiceAndShakesUI(juiceAndShakesList)
         }.addOnFailureListener { e ->
             Log.e(activity.javaClass.simpleName, "Error while fetching your shakes!", e)
         }
