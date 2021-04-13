@@ -4,14 +4,16 @@ import android.os.Parcel
 import android.os.Parcelable
 
 data class Juice (
-    val name: String = "",
-    val image: String = "",
-    val recipe: ArrayList<String> = ArrayList(),
-    val popular: Boolean = true,
-    val mood: ArrayList<String> = ArrayList(),
-    val ingredients: ArrayList<String> = ArrayList()
+    var id: String = "",
+    var name: String = "",
+    var image: String = "",
+    var recipe: ArrayList<String> = ArrayList(),
+    var popular: Boolean = true,
+    var mood: ArrayList<String> = ArrayList(),
+    var ingredients: ArrayList<String> = ArrayList()
 ): Parcelable{
     constructor(parcel: Parcel) : this(
+        parcel.readString()!!,
         parcel.readString()!!,
         parcel.readString()!!,
         parcel.createStringArrayList()!!,
@@ -21,6 +23,7 @@ data class Juice (
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(id)
         parcel.writeString(name)
         parcel.writeString(image)
         parcel.writeStringList(recipe)

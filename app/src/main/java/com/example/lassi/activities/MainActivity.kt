@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
 import com.example.lassi.R
+import com.example.lassi.firebase.FireStoreClass
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -26,6 +27,8 @@ class MainActivity : AppCompatActivity() {
         tv_cold_shakes.typeface = typeFaceSemiBold
         tv_juices.typeface = typeFaceSemiBold
         tv_wishes.typeface = typeFaceBold
+
+        FireStoreClass().getJuiceAnfShakesList(this)
     }
 
 
