@@ -26,8 +26,6 @@ class MainActivity : AppCompatActivity() {
         tv_cold_shakes.typeface = typeFaceSemiBold
         tv_juices.typeface = typeFaceSemiBold
         tv_wishes.typeface = typeFaceBold
-        tv_lorem1.typeface = typeFaceBold
-        tv_lorem2.typeface = typeFaceBold
     }
 
 
