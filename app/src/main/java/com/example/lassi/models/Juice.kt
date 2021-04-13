@@ -5,7 +5,7 @@ import android.os.Parcelable
 
 data class Juice (
     var id: String = "",
-    var name: String = "",
+    var title: String = "",
     var image: String = "",
     var recipe: ArrayList<String> = ArrayList(),
     var popular: Boolean = true,
@@ -24,7 +24,7 @@ data class Juice (
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(id)
-        parcel.writeString(name)
+        parcel.writeString(title)
         parcel.writeString(image)
         parcel.writeStringList(recipe)
         parcel.writeByte(if (popular) 1 else 0)
