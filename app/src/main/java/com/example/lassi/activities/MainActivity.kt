@@ -29,11 +29,13 @@ class MainActivity : AppCompatActivity() {
         val typeFaceRegular : Typeface = Typeface.createFromAsset(assets, "Quicksand-Regular.ttf")
         val typeFaceBold : Typeface = Typeface.createFromAsset(assets, "Quicksand-Bold.ttf")
         val typeFaceSemiBold : Typeface = Typeface.createFromAsset(assets, "Quicksand-SemiBold.ttf")
+        val typeFaceSacramento : Typeface = Typeface.createFromAsset(assets, "Sacramento-Regular.ttf")
         et_search.typeface = typeFaceRegular
         tv_all.typeface = typeFaceSemiBold
         tv_cold_shakes.typeface = typeFaceSemiBold
         tv_juices.typeface = typeFaceSemiBold
         tv_wishes.typeface = typeFaceBold
+        tv_try_new.typeface = typeFaceSacramento
 
         displayWishes()
         getJuiceAndShakesList()
