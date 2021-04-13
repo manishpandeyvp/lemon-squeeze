@@ -6,11 +6,11 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:fillViewport="false"
-    tools:context=".MainActivity">
+    tools:context=".activities.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="15dp">
 
@@ -41,27 +41,30 @@
                         android:layout_height="50dp"
                         android:layout_marginStart="15dp"
                         android:fadeScrollbars="false"
-                        android:gravity="left|center_vertical"
-                        android:hint="Search Juices and Shakes"
+                        android:gravity="start|center_vertical"
+                        android:hint="@string/search_juices_and_shakes"
                         android:textCursorDrawable="@drawable/custom_cursor"
                         android:textColorHint="@color/dark_green"
                         android:background="@android:color/transparent"
                         android:inputType="text"
                         android:textColor="@color/dark_green"
                         android:paddingStart="15dp"
-                        android:paddingLeft="15dp" />
+                        android:paddingEnd="15dp" />
 
                     <ImageView
+                        android:id="@+id/iv_search"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_marginEnd="12dp"
                         android:layout_marginStart="7dp"
+                        android:contentDescription="@string/search"
                         android:src="@drawable/ic_search_black_24dp"/>
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/iv_menu"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 app:cardCornerRadius="15dp"
@@ -71,6 +74,7 @@
                 <ImageView
                     android:layout_width="35dp"
                     android:layout_height="35dp"
+                    android:contentDescription="@string/menu"
                     android:layout_gravity="center"
                     android:src="@drawable/menu"/>
 
@@ -84,7 +88,7 @@
             android:id="@+id/tv_wishes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Good Morning :D"
+            tools:text="Good Morning :D"
             android:textSize="22dp"
             android:textStyle="bold"
             android:layout_marginTop="22dp"
@@ -108,7 +112,7 @@
                     android:id="@+id/tv_all"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="All"
+                    android:text="@string/all"
                     android:textSize="17dp"
                     android:textColor="@color/light_green"
                     android:textStyle="bold"
@@ -130,7 +134,7 @@
                     android:id="@+id/tv_cold_shakes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cold Shakes"
+                    android:text="@string/cold_shakes"
                     android:textSize="17dp"
                     android:textColor="@color/dark_green"
                     android:textStyle="bold"
@@ -152,7 +156,7 @@
                     android:id="@+id/tv_juices"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cold Shakes"
+                    android:text="@string/juice"
                     android:textSize="17dp"
                     android:textColor="@color/dark_green"
                     android:textStyle="bold"
@@ -167,7 +171,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:text="Popular"
+            android:text="@string/popular"
             android:textStyle="bold"
             android:textColor="@color/dark_green"
             android:textSize="20dp"/>
@@ -177,79 +181,12 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="10dp"
-                android:gravity="center_horizontal">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_popular_item"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"/>
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="175dp"
-                    android:layout_height="250dp"
-                    app:cardCornerRadius="20dp"
-                    android:background="@color/light_green"
-                    app:cardBackgroundColor="@color/light_green"
-                    tools:layout_editor_absoluteX="30dp">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/img1"
-                        android:scaleType="centerCrop"
-                        android:background="@drawable/image_container"
-                        android:outlineProvider="background"/>
-
-                </androidx.cardview.widget.CardView>
-
-                <TextView
-                    android:id="@+id/tv_lorem1"
-                    android:layout_width="175dp"
-                    android:gravity="center"
-                    android:layout_height="wrap_content"
-                    android:text="Lorem Ipsum"
-                    android:textSize="18dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/dark_green"
-                    android:layout_marginTop="5dp"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="15dp"
-                android:gravity="center_horizontal">
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="175dp"
-                    android:layout_height="250dp"
-                    app:cardCornerRadius="20dp"
-                    android:background="@color/light_orange"
-                    app:cardBackgroundColor="@color/light_orange"
-                    tools:layout_editor_absoluteX="30dp">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/img2"
-                        android:scaleType="centerCrop"
-                        android:background="@drawable/image_container"
-                        android:outlineProvider="background"/>
-
-                </androidx.cardview.widget.CardView>
-
-                <TextView
-                    android:id="@+id/tv_lorem2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Lorem Ipsum"
-                    android:textSize="18dp"
-                    android:textStyle="bold"
-                    android:textColor="@color/dark_green"
-                    android:layout_marginTop="5dp"/>
-            </LinearLayout>
         </LinearLayout>
 
         <TextView
@@ -257,7 +194,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:text="New Arrival"
+            android:text="@string/new_arrival"
             android:textStyle="bold"
             android:textColor="@color/dark_green"
             android:textSize="20dp"/>
@@ -283,9 +220,11 @@
                     tools:layout_editor_absoluteX="30dp">
 
                     <ImageView
+                        android:id="@+id/iv_new_arrival"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:src="@drawable/img1"
+                        android:contentDescription="@string/new_arrival"
                         android:scaleType="centerCrop"
                         android:background="@drawable/image_container"
                         android:outlineProvider="background"/>
@@ -318,7 +257,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Try this out!"
+                    android:text="@string/try_this_out"
                     android:textSize="14dp"
                     android:textColor="@color/dark_green"
                     android:layout_marginTop="5dp"/>

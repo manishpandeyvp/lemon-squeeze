@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Lassi</string>
+    <string name="search_juices_and_shakes">Search Juices and Shakes</string>
+    <string name="search">Search</string>
+    <string name="menu">Menu</string>
+    <string name="all">All</string>
+    <string name="cold_shakes">Cold Shakes</string>
+    <string name="juice">Juice</string>
+    <string name="popular">Popular</string>
+    <string name="new_arrival">New Arrival</string>
+    <string name="try_this_out">Try this out!</string>
 </resources>

@@ -1,9 +1,10 @@
-package com.example.lassi
+package com.example.lassi.activities
 
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
+import com.example.lassi.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -25,8 +26,6 @@ class MainActivity : AppCompatActivity() {
         tv_cold_shakes.typeface = typeFaceSemiBold
         tv_juices.typeface = typeFaceSemiBold
         tv_wishes.typeface = typeFaceBold
-        tv_lorem1.typeface = typeFaceBold
-        tv_lorem2.typeface = typeFaceBold
     }
 
 
