@@ -70,6 +70,7 @@
             tools:layout_editor_absoluteX="30dp">
 
             <ImageView
+                android:id="@+id/iv_recipe_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/img2"
@@ -80,7 +81,7 @@
         </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/tv_2"
+            android:id="@+id/tv_recipe_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/lorem_ipsum"

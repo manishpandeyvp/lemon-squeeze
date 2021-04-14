@@ -30,6 +30,12 @@ open class JuiceAndShakeListAdapter(
                 .placeholder(R.drawable.image_placeholder)
                 .into(holder.itemView.iv_juice)
             holder.itemView.tv_title.text = model.title
+
+            holder.itemView.setOnClickListener {
+                if(onClickListener != null){
+                    onClickListener!!.onClick(position, model)
+                }
+            }
         }
     }
 
