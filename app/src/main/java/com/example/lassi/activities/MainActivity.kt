@@ -1,9 +1,11 @@
 package com.example.lassi.activities
 
+import android.content.Intent
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.WindowManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lassi.R
@@ -29,18 +31,24 @@ class MainActivity : AppCompatActivity() {
         val typeFaceRegular : Typeface = Typeface.createFromAsset(assets, "Quicksand-Regular.ttf")
         val typeFaceBold : Typeface = Typeface.createFromAsset(assets, "Quicksand-Bold.ttf")
         val typeFaceSemiBold : Typeface = Typeface.createFromAsset(assets, "Quicksand-SemiBold.ttf")
+        val typeFaceSacramento : Typeface = Typeface.createFromAsset(assets, "Sacramento-Regular.ttf")
         et_search.typeface = typeFaceRegular
         tv_all.typeface = typeFaceSemiBold
         tv_cold_shakes.typeface = typeFaceSemiBold
         tv_juices.typeface = typeFaceSemiBold
         tv_wishes.typeface = typeFaceBold
+        tv_try_new.typeface = typeFaceSacramento
 
         displayWishes()
         getJuiceAndShakesList()
 
+        ll_new_arrival.setOnClickListener {
+            startActivity(Intent(this, JuiceAndShakeRecipeActivity::class.java))
+        }
     }
 
     private fun getJuiceAndShakesList(){
+        showLoadingGif()
         FireStoreClass().getJuiceAnfShakesList(this)
     }
 
@@ -49,6 +57,7 @@ class MainActivity : AppCompatActivity() {
             rv_popular_item.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
             val adapter = JuiceAndShakeListAdapter(this, juiceAndShakeList)
             rv_popular_item.adapter = adapter
+            hideLoadingGif()
         }
     }
 
@@ -64,5 +73,15 @@ class MainActivity : AppCompatActivity() {
         }else{
             tv_wishes.text ="Good Evening :D"
         }
+    }
+
+    fun showLoadingGif(){
+        gif_loading.visibility = View.VISIBLE
+        ll_popular_item.visibility = View.GONE
+    }
+
+    fun hideLoadingGif(){
+        gif_loading.visibility = View.GONE
+        ll_popular_item.visibility = View.VISIBLE
     }
 }
