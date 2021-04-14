@@ -22,6 +22,7 @@ class FireStoreClass {
             activity.updateJuiceAndShakesUI(juiceAndShakesList)
         }.addOnFailureListener { e ->
             Log.e(activity.javaClass.simpleName, "Error while fetching your shakes!", e)
+            activity.hideLoadingGif()
         }
     }
 }

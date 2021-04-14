@@ -5,6 +5,7 @@ import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.WindowManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lassi.R
@@ -47,6 +48,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getJuiceAndShakesList(){
+        showLoadingGif()
         FireStoreClass().getJuiceAnfShakesList(this)
     }
 
@@ -55,6 +57,7 @@ class MainActivity : AppCompatActivity() {
             rv_popular_item.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
             val adapter = JuiceAndShakeListAdapter(this, juiceAndShakeList)
             rv_popular_item.adapter = adapter
+            hideLoadingGif()
         }
     }
 
@@ -70,5 +73,15 @@ class MainActivity : AppCompatActivity() {
         }else{
             tv_wishes.text ="Good Evening :D"
         }
+    }
+
+    fun showLoadingGif(){
+        gif_loading.visibility = View.VISIBLE
+        ll_popular_item.visibility = View.GONE
+    }
+
+    fun hideLoadingGif(){
+        gif_loading.visibility = View.GONE
+        ll_popular_item.visibility = View.VISIBLE
     }
 }
