@@ -53,11 +53,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun updateJuiceAndShakesUI(juiceAndShakeList: ArrayList<Juice>){
+        hideLoadingGif()
         if(juiceAndShakeList.size > 0){
             rv_popular_item.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
             val adapter = JuiceAndShakeListAdapter(this, juiceAndShakeList)
             rv_popular_item.adapter = adapter
-            hideLoadingGif()
+            adapter.setOnClickListener(object : JuiceAndShakeListAdapter.OnClickListener{
+                override fun onClick(position: Int, model: Juice) {
+                    TODO("Not yet implemented")
+                }
+
+            })
         }
     }
 
