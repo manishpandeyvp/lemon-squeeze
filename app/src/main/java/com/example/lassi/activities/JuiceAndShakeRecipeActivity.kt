@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.WindowManager
 import com.example.lassi.R
 import kotlinx.android.synthetic.main.activity_juice_and_shake_recipe.*
-import kotlinx.android.synthetic.main.activity_main.*
 
 class JuiceAndShakeRecipeActivity : AppCompatActivity() {
 
@@ -27,11 +26,7 @@ class JuiceAndShakeRecipeActivity : AppCompatActivity() {
         tv_2.typeface = typeFaceBold
         tv_3.typeface = typeFaceRegular
         tv_4.typeface = typeFaceSemiBold
-        tv_5.typeface = typeFaceRegular
-        tv_6.typeface = typeFaceRegular
-        tv_7.typeface = typeFaceRegular
         tv_8.typeface = typeFaceSemiBold
         tv_9.typeface = typeFaceRegular
-        tv_10.typeface = typeFaceRegular
     }
 }

@@ -8,4 +8,5 @@
     <color name="light_orange">#ffd3b4</color>
     <color name="dark_green">#206a5d</color>
     <color name="very_light_green">#feffde</color>
+    <color name="text_desc_color">#289672</color>
 </resources>
