@@ -14,4 +14,6 @@
     <string name="ingredients">Ingredients</string>
     <string name="let_s_try_this_out">Let\'s try this out</string>
     <string name="lemon_squeeze">lemon squeeze</string>
+    <string name="liked">Liked</string>
+    <string name="saved">Saved</string>
 </resources>

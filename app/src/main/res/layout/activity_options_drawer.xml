@@ -56,16 +56,14 @@
             android:layout_marginTop="50dp"
             android:orientation="horizontal">
 
-
-
-                <androidx.cardview.widget.CardView
+            <androidx.cardview.widget.CardView
                     android:id="@+id/iv_saved_recipe"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     app:cardCornerRadius="25dp"
                     android:background="@color/light_green"
                     app:cardElevation="0dp"
-                    android:layout_marginEnd="20dp"
+                    android:layout_marginEnd="30dp"
                     app:cardBackgroundColor="@color/light_green"
                     tools:layout_editor_absoluteX="30dp">
 
@@ -84,7 +82,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Saved"
+                            android:text="@string/saved"
+                            android:layout_marginTop="5dp"
                             android:textStyle="bold"
                             android:textColor="@color/dark_green"
                             android:textSize="16dp"/>
@@ -93,28 +92,76 @@
 
                 </androidx.cardview.widget.CardView>
 
-
-
             <androidx.cardview.widget.CardView
                 android:id="@+id/iv_liked_recipe"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 app:cardCornerRadius="25dp"
-                android:layout_marginStart="20dp"
                 android:background="@color/light_green"
                 app:cardElevation="0dp"
+                android:layout_marginStart="30dp"
                 app:cardBackgroundColor="@color/light_green"
                 tools:layout_editor_absoluteX="30dp">
 
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_heart_filled" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_heart_filled" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/liked"
+                        android:layout_marginTop="5dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/dark_green"
+                        android:textSize="16dp"/>
+
+                </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 
         </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:cardCornerRadius="20dp"
+            android:layout_marginTop="50dp"
+            android:background="@color/light_green"
+            app:cardBackgroundColor="@color/light_green"
+            tools:layout_editor_absoluteX="30dp">
+
+            <ImageView
+                android:id="@+id/iv_try_and_post"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/img4"
+                android:contentDescription="@string/new_arrival"
+                android:scaleType="centerCrop"
+                android:background="@drawable/image_container"
+                android:outlineProvider="background"/>
+
+            <TextView
+                android:id="@+id/tv_try_and_post"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="Try something new and share!"
+                android:textSize="27dp"
+                android:layout_marginStart="20dp"
+                android:layout_gravity="center_vertical"
+                android:textColor="@android:color/white"/>
+
+        </androidx.cardview.widget.CardView>
+
+        
 
 
     </LinearLayout>
