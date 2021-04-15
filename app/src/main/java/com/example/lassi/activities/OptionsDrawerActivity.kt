@@ -26,7 +26,7 @@ class OptionsDrawerActivity : AppCompatActivity() {
         tv_drawer_title.typeface = typeFaceSacramento
         tv_saved_recipe.typeface = typeFaceSemiBold
         tv_liked_recipe.typeface = typeFaceSemiBold
-        tv_try_and_post.typeface = typeFaceSemiBold
+        tv_try_and_post.typeface = typeFaceSacramento
         tv_sign_in.typeface = typeFaceSemiBold
         tv_sign_out.typeface = typeFaceSemiBold
 
