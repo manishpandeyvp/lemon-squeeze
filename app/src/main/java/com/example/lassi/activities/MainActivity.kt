@@ -46,6 +46,10 @@ class MainActivity : AppCompatActivity() {
         iv_drawer.setOnClickListener {
             startActivity(Intent(this, OptionsDrawerActivity::class.java))
         }
+
+        cv_try_new.setOnClickListener {
+            startActivity(Intent(this, IngredientsOption::class.java))
+        }
     }
 
     private fun getJuiceAndShakesList(){

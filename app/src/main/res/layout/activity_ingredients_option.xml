@@ -12,13 +12,14 @@
         android:padding="15dp"
         android:orientation="vertical">
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/iv_recipe_back"
+                android:id="@+id/iv_ingredients_option_back"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 app:cardCornerRadius="15dp"
@@ -36,19 +37,56 @@
             </androidx.cardview.widget.CardView>
 
             <TextView
-                android:id="@+id/tv_1"
+                android:id="@+id/tv_ingredients_option_title"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="Details"
+                android:text="What you got?"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:textColor="@color/dark_green"
                 android:layout_gravity="center"
                 android:layout_marginStart="15dp"/>
 
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="10dp"
+                android:src="@drawable/ic_check"
+                android:visibility="gone"/>
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="10dp"
+                android:src="@drawable/ic_check_light" />
+
         </LinearLayout>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Check your fridge! Let's see what you have?"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="12dp"
+            android:textSize="18dp"
+            android:textColor="@color/dark_green"/>
+
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="CheckBox"
+            android:textSize="18dp"
+            android:textColor="@color/dark_green"
+            android:checked="false"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_ingredients_option"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"/>
+
     </LinearLayout>
-    
+
 </ScrollView>
