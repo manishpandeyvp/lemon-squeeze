@@ -91,10 +91,10 @@
             android:layout_marginTop="8dp"/>
 
         <TextView
-            android:id="@+id/tv_3"
+            android:id="@+id/tv_recipe_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/default_desc"
+            tools:text="@string/default_desc"
             android:textSize="16dp"
             android:textColor="@color/text_desc_color"
             android:layout_marginTop="5dp"/>
@@ -132,7 +132,11 @@
             android:textColor="@color/dark_green"
             android:layout_marginTop="25dp"/>
 
-
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_recipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"/>
 
     </LinearLayout>
 

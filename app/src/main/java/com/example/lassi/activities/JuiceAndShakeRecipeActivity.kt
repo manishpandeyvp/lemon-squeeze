@@ -39,7 +39,7 @@ class JuiceAndShakeRecipeActivity : AppCompatActivity() {
         val typeFaceSacramento : Typeface = Typeface.createFromAsset(assets, "Sacramento-Regular.ttf")
         tv_1.typeface = typeFaceBold
         tv_recipe_title.typeface = typeFaceBold
-        tv_3.typeface = typeFaceRegular
+        tv_recipe_desc.typeface = typeFaceRegular
         tv_4.typeface = typeFaceSemiBold
         tv_8.typeface = typeFaceSemiBold
 
