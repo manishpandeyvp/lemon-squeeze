@@ -18,6 +18,7 @@
             android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/iv_recipe_back"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 app:cardCornerRadius="15dp"
@@ -27,10 +28,10 @@
                 tools:layout_editor_absoluteX="30dp">
 
                 <ImageView
-                    android:layout_gravity="center"
                     android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:src="@drawable/ic_back"/>
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_back" />
 
             </androidx.cardview.widget.CardView>
 

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.lassi.R
 import com.example.lassi.adapters.IngredientsListAdapter
+import com.example.lassi.adapters.RecipeAdapter
 import com.example.lassi.models.Juice
 import com.example.lassi.utils.Constants
 import kotlinx.android.synthetic.main.activity_juice_and_shake_recipe.*
@@ -44,12 +45,20 @@ class JuiceAndShakeRecipeActivity : AppCompatActivity() {
         tv_8.typeface = typeFaceSemiBold
 
         updateUI(mRecipe, this)
+
+        iv_recipe_back.setOnClickListener {
+            onBackPressed()
+        }
     }
 
     private fun updateUI(mJuice: Juice, context: Context){
         rv_ingredients.layoutManager = LinearLayoutManager(this)
-        val adapter = IngredientsListAdapter(this, mJuice.ingredients, assets)
-        rv_ingredients.adapter = adapter
+        val ingredientsAdapter = IngredientsListAdapter(this, mJuice.ingredients, assets)
+        rv_ingredients.adapter = ingredientsAdapter
+
+        rv_recipe.layoutManager = LinearLayoutManager(this)
+        val recipeAdapter = RecipeAdapter(this, mJuice.recipe, assets)
+        rv_recipe.adapter = recipeAdapter
 
         Glide.with(context)
             .load(mJuice.image)
@@ -58,6 +67,8 @@ class JuiceAndShakeRecipeActivity : AppCompatActivity() {
             .into(iv_recipe_image)
 
         tv_recipe_title.text = mJuice.title
+
+        tv_recipe_desc.text = mJuice.desc
     }
 
 }
