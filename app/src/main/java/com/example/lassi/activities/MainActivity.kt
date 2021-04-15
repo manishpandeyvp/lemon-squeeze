@@ -12,6 +12,7 @@ import com.example.lassi.R
 import com.example.lassi.adapters.JuiceAndShakeListAdapter
 import com.example.lassi.firebase.FireStoreClass
 import com.example.lassi.models.Juice
+import com.example.lassi.utils.Constants
 import kotlinx.android.synthetic.main.activity_main.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -41,10 +42,6 @@ class MainActivity : AppCompatActivity() {
 
         displayWishes()
         getJuiceAndShakesList()
-
-        ll_new_arrival.setOnClickListener {
-            startActivity(Intent(this, JuiceAndShakeRecipeActivity::class.java))
-        }
     }
 
     private fun getJuiceAndShakesList(){
@@ -60,9 +57,11 @@ class MainActivity : AppCompatActivity() {
             rv_popular_item.adapter = adapter
             adapter.setOnClickListener(object : JuiceAndShakeListAdapter.OnClickListener{
                 override fun onClick(position: Int, model: Juice) {
-                    TODO("Not yet implemented")
+                    Log.i("Recipe Id", model.id)
+                    val intent = Intent(this@MainActivity, JuiceAndShakeRecipeActivity::class.java)
+                    intent.putExtra(Constants.RECIPE, model)
+                    startActivity(intent)
                 }
-
             })
         }
     }
@@ -81,7 +80,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun showLoadingGif(){
+    private fun showLoadingGif(){
         gif_loading.visibility = View.VISIBLE
         ll_popular_item.visibility = View.GONE
     }

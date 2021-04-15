@@ -7,12 +7,14 @@ data class Juice (
     var id: String = "",
     var title: String = "",
     var image: String = "",
+    val desc: String = "",
     var recipe: ArrayList<String> = ArrayList(),
     var popular: Boolean = true,
     var mood: ArrayList<String> = ArrayList(),
     var ingredients: ArrayList<String> = ArrayList()
 ): Parcelable{
     constructor(parcel: Parcel) : this(
+        parcel.readString()!!,
         parcel.readString()!!,
         parcel.readString()!!,
         parcel.readString()!!,
@@ -26,6 +28,7 @@ data class Juice (
         parcel.writeString(id)
         parcel.writeString(title)
         parcel.writeString(image)
+        parcel.writeString(desc)
         parcel.writeStringList(recipe)
         parcel.writeByte(if (popular) 1 else 0)
         parcel.writeStringList(mood)

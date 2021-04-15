@@ -8,28 +8,29 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lassi.R
-import kotlinx.android.synthetic.main.item_ingredient.view.*
+import kotlinx.android.synthetic.main.item_recipe.view.*
 
-open class IngredientsListAdapter(
+open class RecipeAdapter(
     private val context: Context,
     private val list: ArrayList<String>,
     private val assets: AssetManager
-): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+): RecyclerView.Adapter<RecyclerView.ViewHolder>()  {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return MyViewHolder(
-            LayoutInflater.from(context).inflate(R.layout.item_ingredient, parent, false)
+            LayoutInflater.from(context).inflate(R.layout.item_recipe, parent, false)
         )
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val ingredient = list[position]
+        val recipe = list[position]
         if(holder is MyViewHolder){
-            holder.itemView.tv_ingredient_sr_no.text = "${position+1}. "
-            holder.itemView.tv_ingredient.text = ingredient
+            holder.itemView.tv_recipe_sr_no.text = "${position+1}. "
+            holder.itemView.tv_recipe.text = recipe
             val typeFaceRegular : Typeface = Typeface.createFromAsset(assets, "Quicksand-Regular.ttf")
             val typeFaceSemiBold : Typeface = Typeface.createFromAsset(assets, "Quicksand-SemiBold.ttf")
-            holder.itemView.tv_ingredient.typeface = typeFaceRegular
-            holder.itemView.tv_ingredient_sr_no.typeface = typeFaceSemiBold
+            holder.itemView.tv_recipe.typeface = typeFaceRegular
+            holder.itemView.tv_recipe_sr_no.typeface = typeFaceSemiBold
         }
     }
 
@@ -38,4 +39,5 @@ open class IngredientsListAdapter(
     }
 
     private class MyViewHolder(view: View): RecyclerView.ViewHolder(view)
+
 }
