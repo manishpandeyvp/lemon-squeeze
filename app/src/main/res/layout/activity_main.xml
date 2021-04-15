@@ -64,6 +64,7 @@
             </androidx.cardview.widget.CardView>
 
             <ImageView
+                android:id="@+id/iv_drawer"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:padding="8dp"

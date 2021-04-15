@@ -20,16 +20,16 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/iv_recipe_back"
                 android:layout_width="50dp"
-                android:layout_height="50dp"
-                app:cardCornerRadius="15dp"
+                android:layout_height="match_parent"
                 android:background="@color/light_green"
-                app:cardElevation="0dp"
                 app:cardBackgroundColor="@color/light_green"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="0dp"
                 tools:layout_editor_absoluteX="30dp">
 
                 <ImageView
                     android:layout_width="35dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="35dp"
                     android:layout_gravity="center"
                     android:src="@drawable/ic_back" />
 
@@ -80,6 +80,7 @@
                             android:src="@drawable/ic_bookmark_filled" />
 
                         <TextView
+                            android:id="@+id/tv_saved_recipe"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/saved"
@@ -116,6 +117,7 @@
                         android:src="@drawable/ic_heart_filled" />
 
                     <TextView
+                        android:id="@+id/tv_liked_recipe"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/liked"
@@ -161,7 +163,83 @@
 
         </androidx.cardview.widget.CardView>
 
-        
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="20dp"
+            android:elevation="0dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginStart="50dp"
+            app:cardBackgroundColor="@color/light_green"
+            android:id="@+id/sign_in_with_google">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="start"
+                    android:src="@drawable/ic_google"
+                    android:layout_marginEnd="5dp"/>
+
+                <TextView
+                    android:id="@+id/tv_sign_in"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Sign in with Google"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    android:textColor="@color/dark_green"/>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="20dp"
+            android:elevation="0dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="80dp"
+            android:layout_marginStart="80dp"
+            app:cardBackgroundColor="@color/light_green"
+            android:id="@+id/sign_out">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="start"
+                    android:src="@drawable/ic_sign_out"
+                    android:layout_marginEnd="5dp"/>
+
+                <TextView
+                    android:id="@+id/tv_sign_out"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Sign out"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    android:textColor="@color/dark_green"/>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
 
 
     </LinearLayout>

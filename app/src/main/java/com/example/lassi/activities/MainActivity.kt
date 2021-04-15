@@ -42,6 +42,10 @@ class MainActivity : AppCompatActivity() {
 
         displayWishes()
         getJuiceAndShakesList()
+
+        iv_drawer.setOnClickListener {
+            startActivity(Intent(this, OptionsDrawerActivity::class.java))
+        }
     }
 
     private fun getJuiceAndShakesList(){
