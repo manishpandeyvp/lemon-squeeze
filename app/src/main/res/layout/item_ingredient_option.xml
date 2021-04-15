@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:text="CheckBox"
+        android:layout_marginBottom="2dp"
         android:textSize="18dp"
         android:textColor="@color/dark_green"
         android:checked="false"/>
