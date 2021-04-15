@@ -42,7 +42,6 @@ class JuiceAndShakeRecipeActivity : AppCompatActivity() {
         tv_3.typeface = typeFaceRegular
         tv_4.typeface = typeFaceSemiBold
         tv_8.typeface = typeFaceSemiBold
-        tv_9.typeface = typeFaceRegular
 
         updateUI(mRecipe, this)
     }
