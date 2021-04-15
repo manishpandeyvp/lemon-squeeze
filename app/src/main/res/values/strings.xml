@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Lassi</string>
+    <string name="app_name">Lemon Squeeze</string>
     <string name="search_juices_and_shakes">Search Juices and Shakes</string>
     <string name="search">Search</string>
     <string name="menu">Menu</string>
@@ -13,4 +13,7 @@
     <string name="lorem_ipsum">Lorem Ipsum</string>
     <string name="ingredients">Ingredients</string>
     <string name="let_s_try_this_out">Let\'s try this out</string>
+    <string name="lemon_squeeze">lemon squeeze</string>
+    <string name="liked">Liked</string>
+    <string name="saved">Saved</string>
 </resources>

@@ -9,9 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.JuiceAndShakeRecipeActivity"
+        <activity android:name=".activities.YouCanTryActivity"></activity>
+        <activity android:name=".activities.IngredientsOption" />
+        <activity
+            android:name=".activities.OptionsDrawerActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.JuiceAndShakeRecipeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.SplashScreenActivity"
             android:screenOrientation="portrait"
