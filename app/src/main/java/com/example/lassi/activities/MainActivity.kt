@@ -20,6 +20,8 @@ import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
 
+    private var mJuiceAndShakeList: ArrayList<Juice> = ArrayList()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -48,7 +50,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         cv_try_new.setOnClickListener {
-            startActivity(Intent(this, IngredientsOption::class.java))
+            var intent = Intent(this, IngredientsOption::class.java)
+            intent.putExtra(Constants.JUICE_AND_SHAKES_LIST, mJuiceAndShakeList)
+            startActivity(intent)
         }
     }
 
@@ -59,11 +63,13 @@ class MainActivity : AppCompatActivity() {
 
     fun updateJuiceAndShakesUI(juiceAndShakeList: ArrayList<Juice>){
         hideLoadingGif()
-        if(juiceAndShakeList.size > 0){
-            rv_popular_item.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        if(juiceAndShakeList.size > 0) {
+            mJuiceAndShakeList = juiceAndShakeList
+            rv_popular_item.layoutManager =
+                LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
             val adapter = JuiceAndShakeListAdapter(this, juiceAndShakeList)
             rv_popular_item.adapter = adapter
-            adapter.setOnClickListener(object : JuiceAndShakeListAdapter.OnClickListener{
+            adapter.setOnClickListener(object : JuiceAndShakeListAdapter.OnClickListener {
                 override fun onClick(position: Int, model: Juice) {
                     Log.i("Recipe Id", model.id)
                     val intent = Intent(this@MainActivity, JuiceAndShakeRecipeActivity::class.java)
