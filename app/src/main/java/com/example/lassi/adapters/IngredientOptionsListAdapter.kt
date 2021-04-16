@@ -3,6 +3,7 @@ package com.example.lassi.adapters
 import android.content.Context
 import android.content.res.AssetManager
 import android.graphics.Typeface
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +16,8 @@ open class IngredientOptionsListAdapter(
     private val list: ArrayList<String>,
     private val assets: AssetManager
 ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    private var mSelectedList: ArrayList<String> = ArrayList()
 
     private var onClickListener: OnClickListener? = null
 
@@ -31,9 +34,16 @@ open class IngredientOptionsListAdapter(
             val typeFaceRegular : Typeface = Typeface.createFromAsset(assets, "Quicksand-Regular.ttf")
             holder.itemView.cb_ingredients_option.typeface = typeFaceRegular
 
-            holder.itemView.setOnClickListener {
+            holder.itemView.cb_ingredients_option.setOnClickListener {
+                if(holder.itemView.cb_ingredients_option.isChecked){
+                    mSelectedList.add(ingredient)
+                    Log.i("mOptionHolderA", mSelectedList.toString())
+                }else{
+                    mSelectedList.remove(ingredient)
+                    Log.i("mOptionHolderB", mSelectedList.toString())
+                }
                 if(onClickListener != null){
-                    onClickListener!!.onClick(position, ingredient)
+                    onClickListener!!.onClick(position, ingredient, mSelectedList)
                 }
             }
 
@@ -45,7 +55,7 @@ open class IngredientOptionsListAdapter(
     }
 
     interface OnClickListener{
-        fun onClick(position: Int, ingredient: String)
+        fun onClick(position: Int, ingredient: String, selectedList: ArrayList<String>)
     }
 
     fun setOnClickListener(onClickListener: OnClickListener){

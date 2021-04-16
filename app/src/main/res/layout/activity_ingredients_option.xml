@@ -49,6 +49,7 @@
                 android:layout_marginStart="15dp"/>
 
             <ImageView
+                android:id="@+id/iv_check_dark"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:padding="10dp"
@@ -56,6 +57,7 @@
                 android:visibility="gone"/>
 
             <ImageView
+                android:id="@+id/iv_check_light"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:padding="10dp"
