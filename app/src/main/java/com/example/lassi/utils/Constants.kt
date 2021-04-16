@@ -6,4 +6,5 @@ object Constants {
     const val JUICE_AND_SHAKES = "juiceAndShakes"
     const val RECIPE = "recipe"
     const val JUICE_AND_SHAKES_LIST = "juiceAndShakesList"
+    const val SELECTED_INGREDIENTS_OPTIONS = "selectedIngredientsOption"
 }

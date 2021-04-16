@@ -37,6 +37,7 @@
             </androidx.cardview.widget.CardView>
 
             <TextView
+                android:id="@+id/tv_you_can_try_title"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -64,6 +65,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/tv_try_new_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Rather you can try something new and share with others!"
@@ -89,6 +91,7 @@
                 android:outlineProvider="background"/>
 
             <TextView
+                android:id="@+id/tv_try_something_new"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
