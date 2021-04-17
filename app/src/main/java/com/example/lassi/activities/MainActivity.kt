@@ -4,19 +4,23 @@ import android.content.Intent
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.example.lassi.R
 import com.example.lassi.adapters.JuiceAndShakeListAdapter
 import com.example.lassi.firebase.FireStoreClass
 import com.example.lassi.models.Juice
 import com.example.lassi.utils.Constants
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.item_juice_card.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
 
@@ -41,6 +45,9 @@ class MainActivity : AppCompatActivity() {
         tv_juices.typeface = typeFaceSemiBold
         tv_wishes.typeface = typeFaceBold
         tv_try_new.typeface = typeFaceSacramento
+        tv_randomly_picked_title.typeface = typeFaceBold
+        tv_randomly_picked.typeface = typeFaceSemiBold
+        tv_try_this_out.typeface  =typeFaceRegular
 
         displayWishes()
         getJuiceAndShakesList()
@@ -52,6 +59,30 @@ class MainActivity : AppCompatActivity() {
         cv_try_new.setOnClickListener {
             var intent = Intent(this, IngredientsOption::class.java)
             intent.putExtra(Constants.JUICE_AND_SHAKES_LIST, mJuiceAndShakeList)
+            startActivity(intent)
+        }
+
+        val randomValue = (rand() * (mJuiceAndShakeList.size+1)).toInt() + 1
+
+        Log.i("RandomValue", randomValue.toString())
+
+        gif_loading_randomly_picked.visibility = View.VISIBLE
+        ll_randomly_picked.visibility = View.GONE
+
+        Handler().postDelayed({
+            gif_loading_randomly_picked.visibility = View.GONE
+            ll_randomly_picked.visibility = View.VISIBLE
+            Glide.with(this)
+                .load(mJuiceAndShakeList[randomValue].image)
+                .centerCrop()
+                .placeholder(R.drawable.image_placeholder)
+                .into(iv_randomly_picked)
+            tv_randomly_picked.text = mJuiceAndShakeList[randomValue].title
+        }, 5000)
+
+        ll_randomly_picked.setOnClickListener {
+            val intent = Intent(this@MainActivity, JuiceAndShakeRecipeActivity::class.java)
+            intent.putExtra(Constants.RECIPE, mJuiceAndShakeList[randomValue])
             startActivity(intent)
         }
     }
@@ -102,5 +133,9 @@ class MainActivity : AppCompatActivity() {
     fun hideLoadingGif(){
         gif_loading.visibility = View.GONE
         ll_popular_item.visibility = View.VISIBLE
+    }
+
+    private fun rand(): Double {
+        return Math.random()
     }
 }

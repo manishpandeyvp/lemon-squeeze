@@ -1,8 +1,10 @@
 package com.example.lassi.activities
 
+import android.content.Intent
+import android.graphics.Color
+import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,6 +12,7 @@ import com.example.lassi.R
 import com.example.lassi.adapters.IngredientOptionsListAdapter
 import com.example.lassi.models.Juice
 import com.example.lassi.utils.Constants
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_ingredients_option.*
 
 class IngredientsOption : AppCompatActivity() {
@@ -27,26 +30,44 @@ class IngredientsOption : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
 
+        val typeFaceRegular : Typeface = Typeface.createFromAsset(assets, "Quicksand-Regular.ttf")
+        val typeFaceBold : Typeface = Typeface.createFromAsset(assets, "Quicksand-Bold.ttf")
+        tv_ingredients_option_title.typeface = typeFaceBold
+        tv_check_your_fridge.typeface = typeFaceRegular
+
         mJuiceAndShakesList = intent.getParcelableArrayListExtra(Constants.JUICE_AND_SHAKES_LIST)!!
-        Log.i("mJuiceAndShakesList", mJuiceAndShakesList.toString())
 
         getIngredientsList()
-        Log.i("mIngredients", mIngredients.toString())
 
-        updateIngredientsOptionsList()
         checkProceedingAvailability()
+
+        iv_check_light.setOnClickListener {
+            val snackBar = Snackbar.make(it, "Please select ingredients", Snackbar.LENGTH_SHORT)
+            snackBar.setBackgroundTint(Color.parseColor("#206a5d"))
+            snackBar.setActionTextColor(Color.parseColor("#d5ecc2"))
+            snackBar.show()
+        }
+
+        iv_check_dark.setOnClickListener {
+            val intent = Intent(this, YouCanTryActivity::class.java)
+            intent.putExtra(Constants.SELECTED_INGREDIENTS_OPTIONS, mSelectedIngredients)
+            startActivity(intent)
+        }
+
+        iv_ingredients_option_back.setOnClickListener {
+            onBackPressed()
+        }
     }
 
     private fun getIngredientsList(){
         for (i in mJuiceAndShakesList){
-            Log.i("mIngredientsList", i.ingredients.toString())
             for (j in i.ingredients){
-                Log.i("Value of j", j)
                 if (!mIngredients.contains(j)){
                     mIngredients.add(j)
                 }
             }
         }
+        updateIngredientsOptionsList()
     }
 
     private fun updateIngredientsOptionsList(){
@@ -58,7 +79,6 @@ class IngredientsOption : AppCompatActivity() {
         ingredientsAdapter.setOnClickListener(object :
             IngredientOptionsListAdapter.OnClickListener {
             override fun onClick(position: Int, ingredient: String, selectedList: ArrayList<String>) {
-                Log.i("mSelectedIngredients", selectedList.toString())
                 mSelectedIngredients = selectedList
                 checkProceedingAvailability()
             }
@@ -66,7 +86,6 @@ class IngredientsOption : AppCompatActivity() {
     }
 
     private fun checkProceedingAvailability(){
-        Log.i("SelectedIngredients", mSelectedIngredients.toString())
         if(mSelectedIngredients.isEmpty()){
             iv_check_light.visibility = View.VISIBLE
             iv_check_dark.visibility = View.GONE

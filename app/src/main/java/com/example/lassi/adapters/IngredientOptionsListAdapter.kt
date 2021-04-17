@@ -3,7 +3,6 @@ package com.example.lassi.adapters
 import android.content.Context
 import android.content.res.AssetManager
 import android.graphics.Typeface
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,10 +36,8 @@ open class IngredientOptionsListAdapter(
             holder.itemView.cb_ingredients_option.setOnClickListener {
                 if(holder.itemView.cb_ingredients_option.isChecked){
                     mSelectedList.add(ingredient)
-                    Log.i("mOptionHolderA", mSelectedList.toString())
                 }else{
                     mSelectedList.remove(ingredient)
-                    Log.i("mOptionHolderB", mSelectedList.toString())
                 }
                 if(onClickListener != null){
                     onClickListener!!.onClick(position, ingredient, mSelectedList)
