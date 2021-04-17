@@ -10,6 +10,7 @@ import android.view.WindowManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lassi.R
 import com.example.lassi.adapters.JuiceAndShakeListAdapter
+import com.example.lassi.adapters.YouCanTryOptionsListAdapter
 import com.example.lassi.firebase.FireStoreClass
 import com.example.lassi.models.Juice
 import com.example.lassi.utils.Constants
@@ -20,7 +21,7 @@ import kotlinx.android.synthetic.main.activity_you_can_try.*
 class YouCanTryActivity : AppCompatActivity() {
 
     private var mJuiceAndShakeList: ArrayList<Juice> = ArrayList()
-
+    private var mAvailableOptionsList: ArrayList<Juice> = ArrayList()
     private var mSelectedIngredients: ArrayList<String> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,11 +59,14 @@ class YouCanTryActivity : AppCompatActivity() {
         hideLoadingGif()
         if(juiceAndShakeList.size > 0) {
             mJuiceAndShakeList = juiceAndShakeList
+            getAvailableOptions(mSelectedIngredients, mJuiceAndShakeList)
+            Log.i("AvailableOptions", mAvailableOptionsList.toString())
+
             rv_you_can_try.layoutManager =
                 LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-            val adapter = JuiceAndShakeListAdapter(this, juiceAndShakeList)
-            rv_popular_item.adapter = adapter
-            adapter.setOnClickListener(object : JuiceAndShakeListAdapter.OnClickListener {
+            val adapter = YouCanTryOptionsListAdapter(this, mAvailableOptionsList)
+            rv_you_can_try.adapter = adapter
+            adapter.setOnClickListener(object : YouCanTryOptionsListAdapter.OnClickListener {
                 override fun onClick(position: Int, model: Juice) {
                     Log.i("Recipe Id", model.id)
                     val intent = Intent(this@YouCanTryActivity, JuiceAndShakeRecipeActivity::class.java)
@@ -74,16 +78,36 @@ class YouCanTryActivity : AppCompatActivity() {
     }
 
     private fun showLoadingGif(){
-        gif_loading.visibility = View.VISIBLE
-        ll_popular_item.visibility = View.GONE
+        gif_loading_you_can_try.visibility = View.VISIBLE
+        ll_you_can_try.visibility = View.GONE
     }
 
     fun hideLoadingGif(){
-        gif_loading.visibility = View.GONE
-        ll_popular_item.visibility = View.VISIBLE
+        gif_loading_you_can_try.visibility = View.GONE
+        ll_you_can_try.visibility = View.VISIBLE
     }
 
-    private fun getAvailableOptions(ingredients: ArrayList<String>){
-
+    private fun getAvailableOptions(selectedIngredients: ArrayList<String>, juiceAndShakeList: ArrayList<Juice>){
+        for(i in juiceAndShakeList){
+            var x = 0
+            for (j in i.ingredients){
+                if(selectedIngredients.contains(j)){
+                    x += 1
+                }
+            }
+            if(i.ingredients.size > 5){
+                if (x >= i.ingredients.size-2){
+                    mAvailableOptionsList.add(i)
+                }
+            } else if(i.ingredients.size in 3..5){
+                if (x >= i.ingredients.size-1){
+                    mAvailableOptionsList.add(i)
+                }
+            }else{
+                if (x == i.ingredients.size){
+                    mAvailableOptionsList.add(i)
+                }
+            }
+        }
     }
 }
