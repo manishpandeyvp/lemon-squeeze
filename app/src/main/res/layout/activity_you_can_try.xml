@@ -72,6 +72,24 @@
 
         </LinearLayout>
 
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/gif_nothing_found"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:src="@drawable/gif_nothing_found"
+            android:scaleType="centerCrop"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/tv_nothing_found"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nothing Found!"
+            android:textSize="18dp"
+            android:textColor="@color/dark_green"
+            android:layout_gravity="center"
+            android:visibility="gone"/>
+
         <TextView
             android:id="@+id/tv_try_new_desc"
             android:layout_width="wrap_content"

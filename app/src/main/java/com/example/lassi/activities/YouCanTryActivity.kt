@@ -39,6 +39,7 @@ class YouCanTryActivity : AppCompatActivity() {
         tv_you_can_try_title.typeface = typeFaceBold
         tv_try_new_desc.typeface = typeFaceRegular
         tv_try_something_new.typeface = typeFaceSacramento
+        tv_nothing_found.typeface = typeFaceRegular
 
         mSelectedIngredients = intent.getStringArrayListExtra(Constants.SELECTED_INGREDIENTS_OPTIONS)!!
         Log.i("mSelectedIngredientsY", mSelectedIngredients.toString())
@@ -62,18 +63,28 @@ class YouCanTryActivity : AppCompatActivity() {
             getAvailableOptions(mSelectedIngredients, mJuiceAndShakeList)
             Log.i("AvailableOptions", mAvailableOptionsList.toString())
 
-            rv_you_can_try.layoutManager =
-                LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-            val adapter = YouCanTryOptionsListAdapter(this, mAvailableOptionsList)
-            rv_you_can_try.adapter = adapter
-            adapter.setOnClickListener(object : YouCanTryOptionsListAdapter.OnClickListener {
-                override fun onClick(position: Int, model: Juice) {
-                    Log.i("Recipe Id", model.id)
-                    val intent = Intent(this@YouCanTryActivity, JuiceAndShakeRecipeActivity::class.java)
-                    intent.putExtra(Constants.RECIPE, model)
-                    startActivity(intent)
-                }
-            })
+            if(mAvailableOptionsList.isNotEmpty()){
+                gif_nothing_found.visibility = View.GONE
+                tv_nothing_found.visibility = View.GONE
+                ll_you_can_try.visibility = View.VISIBLE
+
+                rv_you_can_try.layoutManager =
+                    LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+                val adapter = YouCanTryOptionsListAdapter(this, mAvailableOptionsList)
+                rv_you_can_try.adapter = adapter
+                adapter.setOnClickListener(object : YouCanTryOptionsListAdapter.OnClickListener {
+                    override fun onClick(position: Int, model: Juice) {
+                        Log.i("Recipe Id", model.id)
+                        val intent = Intent(this@YouCanTryActivity, JuiceAndShakeRecipeActivity::class.java)
+                        intent.putExtra(Constants.RECIPE, model)
+                        startActivity(intent)
+                    }
+                })
+            }else{
+                gif_nothing_found.visibility = View.VISIBLE
+                tv_nothing_found.visibility = View.VISIBLE
+                ll_you_can_try.visibility = View.GONE
+            }
         }
     }
 
