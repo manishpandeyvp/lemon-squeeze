@@ -31,7 +31,7 @@ class YouCanTryActivity : AppCompatActivity() {
         tv_try_new_desc.typeface = typeFaceRegular
         tv_try_something_new.typeface = typeFaceSacramento
 
-        mSelectedIngredients = intent.getParcelableExtra(Constants.SELECTED_INGREDIENTS_OPTIONS)!!
+        mSelectedIngredients = intent.getStringArrayListExtra(Constants.SELECTED_INGREDIENTS_OPTIONS)!!
         Log.i("mSelectedIngredientsY", mSelectedIngredients.toString())
     }
 }
