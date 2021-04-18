@@ -74,22 +74,37 @@
                 android:id="@+id/iv_recipe_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/img2"
-                android:scaleType="centerCrop"
+                android:src="@drawable/ic_gallery"
+                android:scaleType="centerInside"
                 android:background="@drawable/image_container"
                 android:outlineProvider="background"/>
 
         </androidx.cardview.widget.CardView>
 
-        <TextView
-            android:id="@+id/tv_recipe_title"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/lorem_ipsum"
-            android:textSize="28dp"
-            android:textStyle="bold"
-            android:textColor="@color/dark_green"
-            android:layout_marginTop="8dp"/>
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/tv_recipe_title"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/lorem_ipsum"
+                android:textSize="28dp"
+                android:textStyle="bold"
+                android:paddingVertical="7dp"
+                android:textColor="@color/dark_green" />
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="10dp"
+                android:src="@drawable/ic_edit"/>
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/tv_recipe_desc"
@@ -100,19 +115,30 @@
             android:textColor="@color/text_desc_color"
             android:layout_marginTop="5dp"/>
 
-        <TextView
-            android:id="@+id/tv_4"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/ingredients"
-            android:gravity="center"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:paddingVertical="4dp"
-            android:backgroundTint="@color/light_green"
-            android:background="@color/light_green"
-            android:textColor="@color/dark_green"
-            android:layout_marginTop="35dp"/>
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/tv_ingredient"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/ingredients"
+                android:textSize="22dp"
+                android:textStyle="bold"
+                android:paddingVertical="8dp"
+                android:textColor="@color/dark_green" />
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="10dp"
+                android:src="@drawable/ic_add"/>
+
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_ingredients"
@@ -120,18 +146,30 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"/>
 
-        <TextView
-            android:id="@+id/tv_8"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/let_s_try_this_out"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:paddingVertical="4dp"
-            android:gravity="center"
-            android:background="@color/light_green"
-            android:textColor="@color/dark_green"
-            android:layout_marginTop="25dp"/>
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/tv_recipe"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Recipe"
+                android:textSize="22dp"
+                android:textStyle="bold"
+                android:paddingVertical="8dp"
+                android:textColor="@color/dark_green" />
+
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:padding="10dp"
+                android:src="@drawable/ic_edit"/>
+
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_recipe"

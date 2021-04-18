@@ -9,7 +9,7 @@
     <string name="popular">Popular</string>
     <string name="new_arrival">New Arrival</string>
     <string name="try_this_out">Try this out!</string>
-    <string name="default_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="default_desc">Describe your juice in few words.</string>
     <string name="lorem_ipsum">Lorem Ipsum</string>
     <string name="ingredients">Ingredients</string>
     <string name="let_s_try_this_out">Let\'s try this out</string>
