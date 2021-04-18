@@ -1,6 +1,7 @@
 package com.example.lassi.activities
 
 import android.content.Intent
+import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -15,16 +16,16 @@ import com.example.lassi.adapters.JuiceAndShakeListAdapter
 import com.example.lassi.firebase.FireStoreClass
 import com.example.lassi.models.Juice
 import com.example.lassi.utils.Constants
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.item_juice_card.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
 
     private var mJuiceAndShakeList: ArrayList<Juice> = ArrayList()
+    private var mSearchedResult: ArrayList<Juice> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -85,6 +86,22 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra(Constants.RECIPE, mJuiceAndShakeList[randomValue])
             startActivity(intent)
         }
+
+        iv_search.setOnClickListener {
+            val searchedText: String = et_search.text.toString()
+            if(searchedText.isNotEmpty()){
+                searchJuices(searchedText)
+                Log.i("SearchedJuice", mSearchedResult.toString())
+                val intent = Intent(this, SearchResultsActivity::class.java)
+                intent.putExtra(Constants.SEARCHED_RESULTS, mSearchedResult)
+                startActivity(intent)
+            }else{
+                val snackBar = Snackbar.make(it, "Please enter some text", Snackbar.LENGTH_SHORT)
+                snackBar.setBackgroundTint(Color.parseColor("#206a5d"))
+                snackBar.setActionTextColor(Color.parseColor("#d5ecc2"))
+                snackBar.show()
+            }
+        }
     }
 
     private fun getJuiceAndShakesList(){
@@ -137,5 +154,22 @@ class MainActivity : AppCompatActivity() {
 
     private fun rand(): Double {
         return Math.random()
+    }
+
+    private fun searchJuices(s: String){
+        mSearchedResult = ArrayList()
+        for (i in mJuiceAndShakeList){
+            val list = i.title.split(" ")
+            if(s.toLowerCase(Locale.ROOT) == i.title.toLowerCase(Locale.ROOT)) {
+                mSearchedResult.add(i)
+            }
+            for (j in list){
+                if(s.toLowerCase(Locale.ROOT) == j.toLowerCase(Locale.ROOT)) {
+                    if(!mSearchedResult.contains(i)){
+                        mSearchedResult.add(i)
+                    }
+                }
+            }
+        }
     }
 }
