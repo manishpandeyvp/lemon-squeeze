@@ -9,4 +9,5 @@ object Constants {
     const val SELECTED_INGREDIENTS_OPTIONS = "selectedIngredientsOption"
     const val SEARCHED_RESULTS = "searchedResults"
     const val SEARCHED_STRING = "searchedString"
+    const val GOOGLE_SIGN_IN_REQ_CODE : Int = 123
 }
