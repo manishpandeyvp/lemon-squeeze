@@ -18,7 +18,7 @@
             android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/iv_ingredients_option_back"
+                android:id="@+id/iv_search_results_back"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 app:cardCornerRadius="15dp"
@@ -36,7 +36,7 @@
             </androidx.cardview.widget.CardView>
 
             <TextView
-                android:id="@+id/tv_ingredients_option_title"
+                android:id="@+id/tv_search_results_title"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/tv_check_your_fridge"
+            android:id="@+id/tv_you_searched_for"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="You searched for Lorem Ipsum"
@@ -60,7 +60,7 @@
             android:textColor="@color/dark_green"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_ingredients_option"
+            android:id="@+id/rv_search_results"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"/>

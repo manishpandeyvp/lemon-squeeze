@@ -49,14 +49,16 @@
                         android:inputType="text"
                         android:textColor="@color/dark_green"
                         android:paddingStart="15dp"
-                        android:paddingEnd="15dp" />
+                        android:paddingEnd="15dp"/>
 
                     <ImageView
                         android:id="@+id/iv_search"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:layout_marginStart="7dp"
-                        android:layout_marginEnd="12dp"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="7dp"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"
                         android:contentDescription="@string/search"
                         android:src="@drawable/ic_search_black_24dp" />
 
