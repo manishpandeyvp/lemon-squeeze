@@ -58,14 +58,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         cv_try_new.setOnClickListener {
-            var intent = Intent(this, IngredientsOption::class.java)
+            val intent = Intent(this, IngredientsOption::class.java)
             intent.putExtra(Constants.JUICE_AND_SHAKES_LIST, mJuiceAndShakeList)
             startActivity(intent)
         }
 
         val randomValue = (rand() * (mJuiceAndShakeList.size+1)).toInt() + 1
-
-        Log.i("RandomValue", randomValue.toString())
 
         gif_loading_randomly_picked.visibility = View.VISIBLE
         ll_randomly_picked.visibility = View.GONE
@@ -91,9 +89,9 @@ class MainActivity : AppCompatActivity() {
             val searchedText: String = et_search.text.toString()
             if(searchedText.isNotEmpty()){
                 searchJuices(searchedText)
-                Log.i("SearchedJuice", mSearchedResult.toString())
                 val intent = Intent(this, SearchResultsActivity::class.java)
                 intent.putExtra(Constants.SEARCHED_RESULTS, mSearchedResult)
+                intent.putExtra(Constants.SEARCHED_STRING, searchedText)
                 startActivity(intent)
             }else{
                 val snackBar = Snackbar.make(it, "Please enter some text", Snackbar.LENGTH_SHORT)
@@ -119,7 +117,6 @@ class MainActivity : AppCompatActivity() {
             rv_popular_item.adapter = adapter
             adapter.setOnClickListener(object : JuiceAndShakeListAdapter.OnClickListener {
                 override fun onClick(position: Int, model: Juice) {
-                    Log.i("Recipe Id", model.id)
                     val intent = Intent(this@MainActivity, JuiceAndShakeRecipeActivity::class.java)
                     intent.putExtra(Constants.RECIPE, model)
                     startActivity(intent)
@@ -132,7 +129,6 @@ class MainActivity : AppCompatActivity() {
         val c = Calendar.getInstance().time
         val sdf = SimpleDateFormat("HH", Locale.getDefault())
         val curTime = sdf.format(c)
-        Log.i("Current Time", curTime)
         if(curTime.toInt() < 12){
             tv_wishes.text = "Good Morning :D"
         }else if (curTime.toInt() in 12..15){
