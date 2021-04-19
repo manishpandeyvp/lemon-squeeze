@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.lassi.R
 import com.example.lassi.models.Juice
-import kotlinx.android.synthetic.main.item_juice_card.view.*
 import kotlinx.android.synthetic.main.item_search_result.view.*
 
 open class SearchedResultsAdapter(
