@@ -113,7 +113,7 @@ class MainActivity : AppCompatActivity() {
             mJuiceAndShakeList = juiceAndShakeList
             rv_popular_item.layoutManager =
                 LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-            val adapter = JuiceAndShakeListAdapter(this, juiceAndShakeList)
+            val adapter = JuiceAndShakeListAdapter(this, juiceAndShakeList, assets)
             rv_popular_item.adapter = adapter
             adapter.setOnClickListener(object : JuiceAndShakeListAdapter.OnClickListener {
                 override fun onClick(position: Int, model: Juice) {

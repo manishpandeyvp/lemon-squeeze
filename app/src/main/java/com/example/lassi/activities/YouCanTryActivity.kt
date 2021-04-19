@@ -70,7 +70,7 @@ class YouCanTryActivity : AppCompatActivity() {
 
                 rv_you_can_try.layoutManager =
                     LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-                val adapter = YouCanTryOptionsListAdapter(this, mAvailableOptionsList)
+                val adapter = YouCanTryOptionsListAdapter(this, mAvailableOptionsList, assets)
                 rv_you_can_try.adapter = adapter
                 adapter.setOnClickListener(object : YouCanTryOptionsListAdapter.OnClickListener {
                     override fun onClick(position: Int, model: Juice) {

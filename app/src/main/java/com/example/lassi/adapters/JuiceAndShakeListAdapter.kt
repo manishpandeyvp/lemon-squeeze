@@ -1,6 +1,8 @@
 package com.example.lassi.adapters
 
 import android.content.Context
+import android.content.res.AssetManager
+import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +14,8 @@ import kotlinx.android.synthetic.main.item_juice_card.view.*
 
 open class JuiceAndShakeListAdapter(
     private val context: Context,
-    private val list: ArrayList<Juice>
+    private val list: ArrayList<Juice>,
+    private val assets: AssetManager
 ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var onClickListener: OnClickListener? = null
@@ -29,7 +32,11 @@ open class JuiceAndShakeListAdapter(
                 .centerCrop()
                 .placeholder(R.drawable.image_placeholder)
                 .into(holder.itemView.iv_juice)
-            holder.itemView.tv_title.text = model.title
+            holder.itemView.tv_juice_title.text = model.title
+
+            val typeFaceRegular : Typeface = Typeface.createFromAsset(assets, "Quicksand-Regular.ttf")
+            val typeFaceSemiBold : Typeface = Typeface.createFromAsset(assets, "Quicksand-SemiBold.ttf")
+            holder.itemView.tv_juice_title.typeface = typeFaceSemiBold
 
             holder.itemView.setOnClickListener {
                 if(onClickListener != null){
