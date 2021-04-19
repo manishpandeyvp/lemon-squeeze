@@ -10,6 +10,7 @@ import android.view.WindowManager
 import android.widget.Toast
 import com.example.lassi.R
 import com.example.lassi.firebase.FireStoreClass
+import com.example.lassi.models.User
 import com.example.lassi.utils.Constants
 import com.example.lassi.utils.SavedPreference
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -26,6 +27,7 @@ class OptionsDrawerActivity : AppCompatActivity() {
 
     lateinit var mGoogleSignInClient: GoogleSignInClient
     private val firebaseAuth= FirebaseAuth.getInstance()
+    private var mUserData : User? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -102,8 +104,18 @@ class OptionsDrawerActivity : AppCompatActivity() {
                 SavedPreference.setUsername(this,account.displayName.toString())
                 sign_in_with_google.visibility = View.GONE
                 sign_out.visibility = View.VISIBLE
+                getUserData()
             }
         }
+    }
+
+    private fun getUserData(){
+        FireStoreClass().getUserData(this)
+    }
+
+    fun updateUserData(mUserData: User){
+        this.mUserData = mUserData
+        Log.i("mUserData", mUserData.toString())
     }
 
     override fun onStart() {
@@ -111,6 +123,7 @@ class OptionsDrawerActivity : AppCompatActivity() {
         if(GoogleSignIn.getLastSignedInAccount(this)!=null){
             sign_in_with_google.visibility = View.GONE
             sign_out.visibility = View.VISIBLE
+            getUserData()
         }
     }
 }
