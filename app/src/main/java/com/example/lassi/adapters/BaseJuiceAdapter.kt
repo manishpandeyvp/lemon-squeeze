@@ -10,6 +10,9 @@ abstract class BaseJuiceAdapter(
     private val layoutId: Int,
     private val list: ArrayList<Juice>
 ) : RecyclerView.Adapter<BaseJuiceAdapter.MyViewHolder>(){
+
+    var onClickListener: OnClickListener? = null
+
     class MyViewHolder(view: View): RecyclerView.ViewHolder(view)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -22,9 +25,13 @@ abstract class BaseJuiceAdapter(
         return list.size
     }
 
-    protected var onItemClickListener: ((position: Int, model: Juice) -> Unit)? = null
-
-    fun setOnClickListener(onClickListener: (position: Int, model: Juice) -> Unit){
-        this.onItemClickListener = onClickListener
+    interface OnClickListener{
+        fun onClick(position: Int, model: Juice)
     }
+
+//    protected var onItemClickListener: ((position: Int, model: Juice) -> Unit)? = null
+//
+//    fun setOnClickListener(onClickListener: (position: Int, model: Juice) -> Unit){
+//        this.onItemClickListener = onClickListener
+//    }
 }
