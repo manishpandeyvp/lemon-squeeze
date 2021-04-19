@@ -6,6 +6,7 @@ import com.example.lassi.activities.MainActivity
 import com.example.lassi.activities.YouCanTryActivity
 import com.example.lassi.models.Juice
 import com.example.lassi.utils.Constants
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class FireStoreClass {
@@ -13,7 +14,6 @@ class FireStoreClass {
 
     fun getJuiceAnfShakesList(activity: Activity){
         mFireStore.collection(Constants.JUICE_AND_SHAKES).get().addOnSuccessListener {document ->
-            Log.i("Juice Docs", document.documents.toString())
             val juiceAndShakesList: ArrayList<Juice> = ArrayList()
             for(i in document.documents){
                 val juiceAndShake = i.toObject(Juice::class.java)!!
@@ -36,7 +36,15 @@ class FireStoreClass {
             if(activity is YouCanTryActivity){
                 activity.hideLoadingGif()
             }
-
         }
+    }
+
+    fun getCurrentUserId(): String{
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        var currentUserID = ""
+        if(currentUser != null){
+            currentUserID = currentUser.uid
+        }
+        return currentUserID
     }
 }

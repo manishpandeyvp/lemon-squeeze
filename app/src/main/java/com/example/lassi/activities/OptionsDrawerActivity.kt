@@ -4,10 +4,12 @@ import android.content.Intent
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
 import com.example.lassi.R
+import com.example.lassi.firebase.FireStoreClass
 import com.example.lassi.utils.Constants
 import com.example.lassi.utils.SavedPreference
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -18,7 +20,6 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_options_drawer.*
 
 class OptionsDrawerActivity : AppCompatActivity() {
