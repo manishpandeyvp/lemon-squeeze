@@ -10,17 +10,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.lassi.R
 import com.example.lassi.models.Juice
-import kotlinx.android.synthetic.main.item_you_can_try.view.*
+import kotlinx.android.synthetic.main.item_search_result.view.*
 
-open class YouCanTryOptionsListAdapter(
+open class SearchedResultsAdapter(
     private val context: Context,
     private val list: ArrayList<Juice>,
     private val assets: AssetManager
-) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+
     private var onClickListener: OnClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return MyViewHolder(LayoutInflater.from(context).inflate(R.layout.item_you_can_try, parent, false))
+        return MyViewHolder(LayoutInflater.from(context).inflate(R.layout.item_search_result, parent, false))
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -30,12 +31,13 @@ open class YouCanTryOptionsListAdapter(
                 .load(model.image)
                 .centerCrop()
                 .placeholder(R.drawable.image_placeholder)
-                .into(holder.itemView.iv_you_can_try_item)
-            holder.itemView.tv_you_can_try_item.text = model.title
+                .into(holder.itemView.iv_search_result_item)
+            holder.itemView.tv_search_result_item_title.text = model.title
 
             val typeFaceRegular : Typeface = Typeface.createFromAsset(assets, "Quicksand-Regular.ttf")
             val typeFaceSemiBold : Typeface = Typeface.createFromAsset(assets, "Quicksand-SemiBold.ttf")
-            holder.itemView.tv_you_can_try_item.typeface = typeFaceSemiBold
+            holder.itemView.tv_search_result_item_title.typeface = typeFaceSemiBold
+            holder.itemView.tv_search_result_try_this_out.typeface = typeFaceRegular
 
             holder.itemView.setOnClickListener {
                 if(onClickListener != null){

@@ -164,15 +164,13 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             app:cardCornerRadius="20dp"
             android:elevation="0dp"
             android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
             android:layout_marginTop="50dp"
-            android:layout_marginEnd="50dp"
-            android:layout_marginStart="50dp"
-            app:cardBackgroundColor="@color/light_green"
             android:id="@+id/sign_in_with_google">
 
             <LinearLayout
@@ -203,15 +201,14 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
+            android:layout_width="160dp"
             android:layout_height="wrap_content"
             app:cardCornerRadius="20dp"
             android:elevation="0dp"
+            android:layout_marginBottom="10dp"
             android:layout_gravity="center"
             android:layout_marginTop="50dp"
-            android:layout_marginEnd="80dp"
-            android:layout_marginStart="80dp"
-            app:cardBackgroundColor="@color/light_green"
+            android:visibility="gone"
             android:id="@+id/sign_out">
 
             <LinearLayout

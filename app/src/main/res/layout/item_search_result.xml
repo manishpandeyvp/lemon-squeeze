@@ -17,7 +17,7 @@
         tools:layout_editor_absoluteX="30dp">
 
         <ImageView
-            android:id="@+id/iv_randomly_picked"
+            android:id="@+id/iv_search_result_item"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/img1"
@@ -37,7 +37,7 @@
         android:gravity="center">
 
         <TextView
-            android:id="@+id/tv_randomly_picked"
+            android:id="@+id/tv_search_result_item_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -47,7 +47,7 @@
             android:textColor="@color/dark_green"/>
 
         <TextView
-            android:id="@+id/tv_try_this_out"
+            android:id="@+id/tv_search_result_try_this_out"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"

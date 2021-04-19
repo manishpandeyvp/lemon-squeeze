@@ -9,13 +9,10 @@ import android.view.View
 import android.view.WindowManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lassi.R
-import com.example.lassi.adapters.JuiceAndShakeListAdapter
 import com.example.lassi.adapters.YouCanTryOptionsListAdapter
 import com.example.lassi.firebase.FireStoreClass
 import com.example.lassi.models.Juice
 import com.example.lassi.utils.Constants
-import kotlinx.android.synthetic.main.activity_ingredients_option.*
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_you_can_try.*
 
 class YouCanTryActivity : AppCompatActivity() {
@@ -63,15 +60,16 @@ class YouCanTryActivity : AppCompatActivity() {
             getAvailableOptions(mSelectedIngredients, mJuiceAndShakeList)
             Log.i("AvailableOptions", mAvailableOptionsList.toString())
 
-            if(mAvailableOptionsList.isNotEmpty()){
+            if(mAvailableOptionsList.isNotEmpty()) {
                 gif_nothing_found.visibility = View.GONE
                 tv_nothing_found.visibility = View.GONE
                 ll_you_can_try.visibility = View.VISIBLE
 
                 rv_you_can_try.layoutManager =
                     LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-                val adapter = YouCanTryOptionsListAdapter(this, mAvailableOptionsList)
+                val adapter = YouCanTryOptionsListAdapter(this, mAvailableOptionsList, assets)
                 rv_you_can_try.adapter = adapter
+
                 adapter.setOnClickListener(object : YouCanTryOptionsListAdapter.OnClickListener {
                     override fun onClick(position: Int, model: Juice) {
                         Log.i("Recipe Id", model.id)

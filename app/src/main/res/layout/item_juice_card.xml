@@ -28,7 +28,7 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/tv_title"
+        android:id="@+id/tv_juice_title"
         android:layout_width="175dp"
         android:gravity="center"
         android:layout_height="wrap_content"
