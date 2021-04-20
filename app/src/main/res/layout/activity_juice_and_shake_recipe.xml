@@ -48,16 +48,34 @@
                 android:layout_marginStart="15dp"/>
 
             <ImageView
+                android:id="@+id/iv_bookmark_empty"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:padding="10dp"
                 android:src="@drawable/ic_bookmark_empty"/>
 
             <ImageView
+                android:id="@+id/iv_bookmark_filled"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="10dp"
+                android:src="@drawable/ic_bookmark_filled"
+                android:visibility="gone"/>
+
+            <ImageView
+                android:id="@+id/iv_heart_empty"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:padding="10dp"
                 android:src="@drawable/ic_heart_empty"/>
+
+            <ImageView
+                android:id="@+id/iv_heart_filled"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="10dp"
+                android:src="@drawable/ic_heart_filled"
+                android:visibility="gone"/>
 
         </LinearLayout>
 
