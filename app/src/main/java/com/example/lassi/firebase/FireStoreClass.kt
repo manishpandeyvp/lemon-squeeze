@@ -2,6 +2,7 @@ package com.example.lassi.firebase
 
 import android.app.Activity
 import android.util.Log
+import com.example.lassi.activities.JuiceAndShakeRecipeActivity
 import com.example.lassi.activities.MainActivity
 import com.example.lassi.activities.OptionsDrawerActivity
 import com.example.lassi.activities.YouCanTryActivity
@@ -66,6 +67,17 @@ class FireStoreClass {
             }
         }.addOnFailureListener { e ->
             Log.e(activity.javaClass.simpleName, "Error while fetching User Data", e)
+        }
+    }
+
+    fun updateUserData(activity: Activity){
+        val updatedUserData: User = Constants.user_data
+        mFireStore.collection(Constants.USERS).document(getCurrentUserId()).set(updatedUserData, SetOptions.merge()).addOnSuccessListener {
+            if(activity is JuiceAndShakeRecipeActivity){
+                activity.updateUserDataSuccess()
+            }
+        }.addOnFailureListener { e ->
+            Log.e(activity.javaClass.simpleName, "Error while updating user", e)
         }
     }
 
