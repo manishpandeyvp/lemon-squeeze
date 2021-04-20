@@ -25,7 +25,7 @@ import kotlinx.android.synthetic.main.activity_options_drawer.*
 
 class OptionsDrawerActivity : AppCompatActivity() {
 
-    lateinit var mGoogleSignInClient: GoogleSignInClient
+    private lateinit var mGoogleSignInClient: GoogleSignInClient
     private val firebaseAuth= FirebaseAuth.getInstance()
     private var mUserData : User? = null
 
@@ -110,12 +110,17 @@ class OptionsDrawerActivity : AppCompatActivity() {
     }
 
     private fun getUserData(){
+        FireStoreClass().registerUser(this)
+    }
+
+    fun userRegistrationSuccess(){
+        Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
         FireStoreClass().getUserData(this)
     }
 
     fun updateUserData(mUserData: User){
         this.mUserData = mUserData
-        Log.i("mUserData", mUserData.toString())
+        Log.i("mUserData", this.mUserData.toString())
     }
 
     override fun onStart() {

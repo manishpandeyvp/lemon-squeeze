@@ -1,5 +1,7 @@
 package com.example.lassi.utils
 
+import com.example.lassi.models.User
+
 object Constants {
     const val JUICE_AND_SHAKES = "juiceAndShakes"
     const val RECIPE = "recipe"
@@ -9,4 +11,5 @@ object Constants {
     const val SEARCHED_STRING = "searchedString"
     const val GOOGLE_SIGN_IN_REQ_CODE : Int = 123
     const val USERS = "users"
+    var user_data: User = User()
 }

@@ -15,6 +15,7 @@ import com.example.lassi.R
 import com.example.lassi.adapters.JuiceAndShakeListAdapter
 import com.example.lassi.firebase.FireStoreClass
 import com.example.lassi.models.Juice
+import com.example.lassi.models.User
 import com.example.lassi.utils.Constants
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
@@ -100,6 +101,22 @@ class MainActivity : AppCompatActivity() {
                 snackBar.show()
             }
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        checkUserSignedIn()
+    }
+
+    private fun checkUserSignedIn(){
+        if(FireStoreClass().getCurrentUserId().isNotEmpty()){
+            FireStoreClass().getUserData(this)
+        }
+    }
+
+    fun updateUserData(mUserData: User){
+        Constants.user_data = mUserData
+        Log.i("user_data", Constants.user_data.toString())
     }
 
     private fun getJuiceAndShakesList(){

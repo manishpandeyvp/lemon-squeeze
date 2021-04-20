@@ -42,17 +42,34 @@ class FireStoreClass {
         }
     }
 
+    fun registerUser(activity: Activity){
+        val userHashMap = HashMap<String, Any>()
+        userHashMap["userId"] = getCurrentUserId()
+
+        mFireStore.collection(Constants.USERS).document(getCurrentUserId()).set(userHashMap, SetOptions.merge()).addOnSuccessListener {
+            if(activity is OptionsDrawerActivity){
+                activity.userRegistrationSuccess()
+            }
+        }.addOnFailureListener { e ->
+            Log.e(activity.javaClass.simpleName, "Error while registering user", e)
+        }
+    }
+
     fun getUserData(activity: Activity){
-        val user: User = User()
-        user.userId = getCurrentUserId()
-        mFireStore.collection(Constants.USERS).document(getCurrentUserId()).set(user, SetOptions.merge()).addOnSuccessListener { document ->
-            Log.i("UpdatedUserData", document.toString())
+        mFireStore.collection(Constants.USERS).document(getCurrentUserId()).get().addOnSuccessListener { document ->
+            val userData = document.toObject(User::class.java)!!
+            if(activity is OptionsDrawerActivity){
+                activity.updateUserData(userData)
+            }
+            if(activity is MainActivity){
+                activity.updateUserData(userData)
+            }
         }.addOnFailureListener { e ->
             Log.e(activity.javaClass.simpleName, "Error while fetching User Data", e)
         }
     }
 
-    private fun getCurrentUserId(): String{
+    fun getCurrentUserId(): String{
         val currentUser = FirebaseAuth.getInstance().currentUser
         var currentUserID = ""
         if(currentUser != null){
