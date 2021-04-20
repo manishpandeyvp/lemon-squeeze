@@ -92,7 +92,7 @@
                 android:id="@+id/iv_recipe_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/img2"
+                tools:src="@drawable/img4"
                 android:scaleType="centerCrop"
                 android:background="@drawable/image_container"
                 android:outlineProvider="background"/>

@@ -1,14 +1,12 @@
 package com.example.lassi.activities
 
 import android.content.Context
-import android.content.Intent
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.lassi.R
@@ -18,7 +16,6 @@ import com.example.lassi.firebase.FireStoreClass
 import com.example.lassi.models.Juice
 import com.example.lassi.utils.Constants
 import kotlinx.android.synthetic.main.activity_juice_and_shake_recipe.*
-import kotlinx.android.synthetic.main.item_juice_card.view.*
 
 class JuiceAndShakeRecipeActivity : AppCompatActivity() {
 
@@ -81,7 +78,7 @@ class JuiceAndShakeRecipeActivity : AppCompatActivity() {
     }
 
     fun updateUserDataSuccess(){
-        Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show()
+        Log.i("Updated", "Updated")
     }
 
     private fun updateUI(mJuice: Juice, context: Context){

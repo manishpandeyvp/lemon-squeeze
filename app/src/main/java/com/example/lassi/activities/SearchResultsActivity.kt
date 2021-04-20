@@ -41,7 +41,6 @@ class SearchResultsActivity : AppCompatActivity() {
         tv_you_searched_for.typeface = typeFaceRegular
 
         iv_search_results_back.setOnClickListener {
-            et_search.setText("")
             onBackPressed()
         }
 

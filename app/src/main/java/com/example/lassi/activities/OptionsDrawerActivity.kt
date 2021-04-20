@@ -69,6 +69,15 @@ class OptionsDrawerActivity : AppCompatActivity() {
                 sign_in_with_google.visibility = View.VISIBLE
                 sign_out.visibility = View.GONE
             }
+            Constants.user_data = User()
+        }
+
+        iv_saved_recipe.setOnClickListener {
+            startActivity(Intent(this, SavedJuicesActivity::class.java))
+        }
+
+        iv_liked_recipe.setOnClickListener {
+            startActivity(Intent(this, LikedJuicesActivity::class.java))
         }
     }
 
@@ -114,13 +123,11 @@ class OptionsDrawerActivity : AppCompatActivity() {
     }
 
     fun userRegistrationSuccess(){
-        Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
         FireStoreClass().getUserData(this)
     }
 
     fun updateUserData(mUserData: User){
         this.mUserData = mUserData
-        Log.i("mUserData", this.mUserData.toString())
     }
 
     override fun onStart() {
