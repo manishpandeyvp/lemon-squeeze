@@ -9,12 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.SearchResultsActivity"
+        <activity android:name=".activities.LikedJuicesActivity"></activity>
+        <activity android:name=".activities.SavedJuicesActivity" />
+        <activity
+            android:name=".activities.SearchResultsActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".activities.PostYourRecipeActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.PostYourRecipeActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.YouCanTryActivity"
             android:screenOrientation="portrait"
