@@ -17,7 +17,7 @@
         tools:layout_editor_absoluteX="30dp">
 
         <ImageView
-            android:id="@+id/iv_search_result_item"
+            android:id="@+id/iv_item_saved_liked"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/img1"

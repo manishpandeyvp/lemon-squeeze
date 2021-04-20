@@ -1,10 +1,19 @@
 package com.example.lassi.activities
 
+import android.content.Intent
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.view.WindowManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lassi.R
+import com.example.lassi.adapters.SavedLikedItemsAdapter
+import com.example.lassi.adapters.SearchedResultsAdapter
+import com.example.lassi.firebase.FireStoreClass
+import com.example.lassi.models.Juice
+import com.example.lassi.utils.Constants
 import kotlinx.android.synthetic.main.activity_saved_juices.*
 
 class SavedJuicesActivity : AppCompatActivity() {
@@ -28,5 +37,48 @@ class SavedJuicesActivity : AppCompatActivity() {
         iv_saved_back.setOnClickListener {
             onBackPressed()
         }
+    }
+
+    private fun updateJuiceAndShakesUI(juiceAndShakeList: ArrayList<Juice>){
+        if(juiceAndShakeList.size > 0) {
+            gif_nothing_found.visibility = View.GONE
+            tv_nothing_found.visibility = View.GONE
+            rv_saved.layoutManager =
+                LinearLayoutManager(this)
+            val adapter = SavedLikedItemsAdapter(this, juiceAndShakeList, assets)
+            rv_saved.adapter = adapter
+            adapter.setOnClickListener(object : SavedLikedItemsAdapter.OnClickListener {
+                override fun onClick(position: Int, model: Juice) {
+                    val intent = Intent(this@SavedJuicesActivity, JuiceAndShakeRecipeActivity::class.java)
+                    intent.putExtra(Constants.RECIPE, model)
+                    startActivity(intent)
+                }
+
+                override fun onDeleteClick(model: Juice) {
+                    removeFromSavedList(model)
+                }
+            })
+
+        }else{
+            gif_nothing_found.visibility = View.VISIBLE
+            tv_nothing_found.visibility = View.VISIBLE
+        }
+    }
+
+    private fun removeFromSavedList(mJuice: Juice){
+        Constants.user_data.savedList.remove(mJuice.id)
+        updateUserData()
+    }
+
+    private fun updateUserData(){
+        FireStoreClass().updateUserData(this)
+    }
+
+    fun updateUserDataSuccess(){
+        
+    }
+
+    private fun getSavedJuicesList(){
+
     }
 }

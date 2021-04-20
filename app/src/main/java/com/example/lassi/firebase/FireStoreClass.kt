@@ -2,10 +2,7 @@ package com.example.lassi.firebase
 
 import android.app.Activity
 import android.util.Log
-import com.example.lassi.activities.JuiceAndShakeRecipeActivity
-import com.example.lassi.activities.MainActivity
-import com.example.lassi.activities.OptionsDrawerActivity
-import com.example.lassi.activities.YouCanTryActivity
+import com.example.lassi.activities.*
 import com.example.lassi.models.Juice
 import com.example.lassi.models.User
 import com.example.lassi.utils.Constants
@@ -74,6 +71,9 @@ class FireStoreClass {
         val updatedUserData: User = Constants.user_data
         mFireStore.collection(Constants.USERS).document(getCurrentUserId()).set(updatedUserData, SetOptions.merge()).addOnSuccessListener {
             if(activity is JuiceAndShakeRecipeActivity){
+                activity.updateUserDataSuccess()
+            }
+            if(activity is SavedJuicesActivity){
                 activity.updateUserDataSuccess()
             }
         }.addOnFailureListener { e ->
