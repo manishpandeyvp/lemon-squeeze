@@ -4,13 +4,11 @@ import android.content.Intent
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lassi.R
 import com.example.lassi.adapters.SavedLikedItemsAdapter
-import com.example.lassi.adapters.SearchedResultsAdapter
 import com.example.lassi.firebase.FireStoreClass
 import com.example.lassi.models.Juice
 import com.example.lassi.utils.Constants
@@ -27,10 +25,8 @@ class SavedJuicesActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
 
-        val typeFaceRegular : Typeface = Typeface.createFromAsset(assets, "Quicksand-Regular.ttf")
         val typeFaceBold : Typeface = Typeface.createFromAsset(assets, "Quicksand-Bold.ttf")
         val typeFaceSemiBold : Typeface = Typeface.createFromAsset(assets, "Quicksand-SemiBold.ttf")
-        val typeFaceSacramento : Typeface = Typeface.createFromAsset(assets, "Sacramento-Regular.ttf")
 
         tv_saved_title.typeface = typeFaceBold
         tv_nothing_found.typeface = typeFaceSemiBold
@@ -66,7 +62,7 @@ class SavedJuicesActivity : AppCompatActivity() {
     }
 
     private fun getSavedJuicesList(){
-        FireStoreClass().getSavedJuices(this)
+        FireStoreClass().getSavedLikedJuices(this)
     }
 
     fun getSavedJuicesListSuccess(mSavedJuices: ArrayList<Juice>){

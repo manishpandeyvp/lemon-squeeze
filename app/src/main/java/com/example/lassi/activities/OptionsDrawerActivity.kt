@@ -75,6 +75,10 @@ class OptionsDrawerActivity : AppCompatActivity() {
         iv_saved_recipe.setOnClickListener {
             startActivity(Intent(this, SavedJuicesActivity::class.java))
         }
+
+        iv_liked_recipe.setOnClickListener {
+            startActivity(Intent(this, LikedJuicesActivity::class.java))
+        }
     }
 
     private  fun signInGoogle(){

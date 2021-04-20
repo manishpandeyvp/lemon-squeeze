@@ -40,18 +40,30 @@ class FireStoreClass {
         }
     }
 
-    fun getSavedJuices(activity: SavedJuicesActivity){
+    fun getSavedLikedJuices(activity: Activity){
         mFireStore.collection(Constants.JUICE_AND_SHAKES).get().addOnSuccessListener {document ->
             val savedJuiceAndShakesList: ArrayList<Juice> = ArrayList()
+            val likedJuiceAndShakesList: ArrayList<Juice> = ArrayList()
             for(i in document.documents){
                 if(Constants.user_data.savedList.contains(i.id)){
                     val juiceAndShake = i.toObject(Juice::class.java)!!
                     juiceAndShake.id = i.id
                     savedJuiceAndShakesList.add(juiceAndShake)
                 }
+                if(Constants.user_data.likedJuices.contains(i.id)){
+                    val juiceAndShake = i.toObject(Juice::class.java)!!
+                    juiceAndShake.id = i.id
+                    likedJuiceAndShakesList.add(juiceAndShake)
+                }
             }
 
-            activity.getSavedJuicesListSuccess(savedJuiceAndShakesList)
+            if(activity is SavedJuicesActivity){
+                activity.getSavedJuicesListSuccess(savedJuiceAndShakesList)
+            }
+            if(activity is LikedJuicesActivity){
+                activity.getLikedJuicesListSuccess(likedJuiceAndShakesList)
+            }
+
 
         }.addOnFailureListener { e ->
             Log.e(activity.javaClass.simpleName, "Error while fetching your shakes!", e)

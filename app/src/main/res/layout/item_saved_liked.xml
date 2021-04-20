@@ -20,7 +20,6 @@
             android:id="@+id/iv_item_saved_liked"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/img1"
             android:contentDescription="@string/new_arrival"
             android:scaleType="centerCrop"
             android:background="@drawable/image_container"
