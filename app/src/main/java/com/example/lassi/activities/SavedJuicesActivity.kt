@@ -33,10 +33,13 @@ class SavedJuicesActivity : AppCompatActivity() {
         val typeFaceSacramento : Typeface = Typeface.createFromAsset(assets, "Sacramento-Regular.ttf")
 
         tv_saved_title.typeface = typeFaceBold
+        tv_nothing_found.typeface = typeFaceSemiBold
 
         iv_saved_back.setOnClickListener {
             onBackPressed()
         }
+
+        getSavedJuicesList()
     }
 
     private fun updateJuiceAndShakesUI(juiceAndShakeList: ArrayList<Juice>){
@@ -53,32 +56,29 @@ class SavedJuicesActivity : AppCompatActivity() {
                     intent.putExtra(Constants.RECIPE, model)
                     startActivity(intent)
                 }
-
-                override fun onDeleteClick(model: Juice) {
-                    removeFromSavedList(model)
-                }
             })
 
         }else{
+            rv_saved.visibility = View.GONE
             gif_nothing_found.visibility = View.VISIBLE
             tv_nothing_found.visibility = View.VISIBLE
         }
     }
 
-    private fun removeFromSavedList(mJuice: Juice){
-        Constants.user_data.savedList.remove(mJuice.id)
-        updateUserData()
-    }
-
-    private fun updateUserData(){
-        FireStoreClass().updateUserData(this)
-    }
-
-    fun updateUserDataSuccess(){
-        
-    }
-
     private fun getSavedJuicesList(){
+        FireStoreClass().getSavedJuices(this)
+    }
 
+    fun getSavedJuicesListSuccess(mSavedJuices: ArrayList<Juice>){
+        updateJuiceAndShakesUI(mSavedJuices)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if(Constants.user_data.savedList.size>0){
+            getSavedJuicesList()
+        }else{
+            updateJuiceAndShakesUI(ArrayList())
+        }
     }
 }

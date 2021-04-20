@@ -18,7 +18,6 @@ open class SavedLikedItemsAdapter(
     private val assets: AssetManager
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var onClickListener: OnClickListener? = null
-    private var onDeleteClickListener: OnClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return MyViewHolder(LayoutInflater.from(context).inflate(R.layout.item_saved_liked, parent, false))
@@ -44,12 +43,6 @@ open class SavedLikedItemsAdapter(
                     onClickListener!!.onClick(position, model)
                 }
             }
-
-            holder.itemView.iv_saved_liked_delete.setOnClickListener {
-                if(onDeleteClickListener != null){
-                    onDeleteClickListener!!.onDeleteClick(model)
-                }
-            }
         }
     }
 
@@ -59,15 +52,10 @@ open class SavedLikedItemsAdapter(
 
     interface OnClickListener{
         fun onClick(position: Int, model: Juice)
-        fun onDeleteClick(model: Juice)
     }
 
     fun setOnClickListener(onClickListener: OnClickListener){
         this.onClickListener = onClickListener
-    }
-
-    fun setOnDeleteClickListener(onDeleteClickListener: OnClickListener){
-        this.onDeleteClickListener = onDeleteClickListener
     }
 
     private class MyViewHolder(view: View): RecyclerView.ViewHolder(view)

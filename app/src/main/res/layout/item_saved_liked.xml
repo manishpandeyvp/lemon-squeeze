@@ -38,7 +38,7 @@
 
         <TextView
             android:id="@+id/tv_item_saved_liked_title"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             tools:text="Lorem Ipsum Lorem Ipsum"
@@ -48,22 +48,13 @@
 
         <TextView
             android:id="@+id/tv_saved_liked_try_this_out"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/try_this_out"
             android:textSize="14dp"
             android:textColor="@color/dark_green"
             android:layout_marginTop="5dp"/>
-
-        <ImageView
-            android:id="@+id/iv_saved_liked_delete"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/ic_delete"
-            android:contentDescription="@string/delete"
-            android:layout_marginTop="10dp"
-            android:padding="7dp"/>
 
     </LinearLayout>
 

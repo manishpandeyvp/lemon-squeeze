@@ -40,6 +40,24 @@ class FireStoreClass {
         }
     }
 
+    fun getSavedJuices(activity: SavedJuicesActivity){
+        mFireStore.collection(Constants.JUICE_AND_SHAKES).get().addOnSuccessListener {document ->
+            val savedJuiceAndShakesList: ArrayList<Juice> = ArrayList()
+            for(i in document.documents){
+                if(Constants.user_data.savedList.contains(i.id)){
+                    val juiceAndShake = i.toObject(Juice::class.java)!!
+                    juiceAndShake.id = i.id
+                    savedJuiceAndShakesList.add(juiceAndShake)
+                }
+            }
+
+            activity.getSavedJuicesListSuccess(savedJuiceAndShakesList)
+
+        }.addOnFailureListener { e ->
+            Log.e(activity.javaClass.simpleName, "Error while fetching your shakes!", e)
+        }
+    }
+
     fun registerUser(activity: Activity){
         val userHashMap = HashMap<String, Any>()
         userHashMap["userId"] = getCurrentUserId()
@@ -71,9 +89,6 @@ class FireStoreClass {
         val updatedUserData: User = Constants.user_data
         mFireStore.collection(Constants.USERS).document(getCurrentUserId()).set(updatedUserData, SetOptions.merge()).addOnSuccessListener {
             if(activity is JuiceAndShakeRecipeActivity){
-                activity.updateUserDataSuccess()
-            }
-            if(activity is SavedJuicesActivity){
                 activity.updateUserDataSuccess()
             }
         }.addOnFailureListener { e ->
