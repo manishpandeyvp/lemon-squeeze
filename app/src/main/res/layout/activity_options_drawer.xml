@@ -133,6 +133,7 @@
         </LinearLayout>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/iv_try_and_post"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             app:cardCornerRadius="20dp"
@@ -142,7 +143,6 @@
             tools:layout_editor_absoluteX="30dp">
 
             <ImageView
-                android:id="@+id/iv_try_and_post"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/img4"
