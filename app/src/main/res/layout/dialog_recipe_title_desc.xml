@@ -10,18 +10,33 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Ingredient"
+        android:text="Add Title and Description"
         android:textSize="21dp"
         android:textStyle="bold"
         android:textColor="@color/dark_green"/>
 
     <EditText
-        android:id="@+id/et_add_ingredient"
+        android:id="@+id/et_edit_title"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:fadeScrollbars="false"
         android:gravity="start|center_vertical"
-        android:hint="Ingredient"
+        android:hint="Title goes here!"
+        android:textCursorDrawable="@drawable/custom_cursor"
+        android:textColorHint="@color/dark_green"
+        android:inputType="text"
+        android:textSize="22dp"
+        android:layout_marginTop="15dp"
+        android:textStyle="bold"
+        android:textColor="@color/dark_green"/>
+
+    <EditText
+        android:id="@+id/et_edit_desc"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:fadeScrollbars="false"
+        android:gravity="start|center_vertical"
+        android:hint="@string/default_desc"
         android:textCursorDrawable="@drawable/custom_cursor"
         android:textColorHint="@color/dark_green"
         android:inputType="text"
@@ -31,6 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_marginTop="10dp"
         android:gravity="end">
 
         <TextView
