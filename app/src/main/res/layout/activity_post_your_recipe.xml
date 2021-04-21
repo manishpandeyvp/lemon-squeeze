@@ -18,7 +18,7 @@
             android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/iv_recipe_back"
+                android:id="@+id/iv_post_your_recipe_back"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 app:cardCornerRadius="15dp"
@@ -36,7 +36,7 @@
             </androidx.cardview.widget.CardView>
 
             <TextView
-                android:id="@+id/tv_1"
+                android:id="@+id/tv_post_your_recipe_title"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -48,12 +48,14 @@
                 android:layout_marginStart="15dp"/>
 
             <ImageView
+                android:id="@+id/iv_post_your_recipe_done_light"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:padding="10dp"
                 android:src="@drawable/ic_check_light"/>
 
             <ImageView
+                android:id="@+id/iv_post_your_recipe_done_dark"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:padding="10dp"
@@ -71,7 +73,7 @@
             tools:layout_editor_absoluteX="30dp">
 
             <ImageView
-                android:id="@+id/iv_recipe_image"
+                android:id="@+id/iv_juice_image_post"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/ic_gallery"
@@ -99,6 +101,7 @@
                 android:textColor="@color/dark_green" />
 
             <ImageView
+                android:id="@+id/iv_edit_recipe_title_desc"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:padding="10dp"
@@ -133,6 +136,7 @@
                 android:textColor="@color/dark_green" />
 
             <ImageView
+                android:id="@+id/iv_add_ingredient"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:padding="10dp"
@@ -164,6 +168,7 @@
                 android:textColor="@color/dark_green" />
 
             <ImageView
+                android:id="@+id/iv_edit_recipe"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:padding="10dp"

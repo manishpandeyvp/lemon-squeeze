@@ -18,7 +18,7 @@
             android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/iv_recipe_back"
+                android:id="@+id/iv_edit_recipe_back"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 app:cardCornerRadius="15dp"
@@ -36,11 +36,11 @@
             </androidx.cardview.widget.CardView>
 
             <TextView
-                android:id="@+id/tv_1"
+                android:id="@+id/tv_edit_recipe_title"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="Post Your Recipe"
+                android:text="Recipe"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:textColor="@color/dark_green"
@@ -48,12 +48,14 @@
                 android:layout_marginStart="15dp"/>
 
             <ImageView
+                android:id="@+id/iv_add_recipe_item"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:padding="10dp"
                 android:src="@drawable/ic_add"/>
 
             <ImageView
+                android:id="@+id/iv_done_editing_recipe"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:padding="10dp"
@@ -62,7 +64,7 @@
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_search_results"
+            android:id="@+id/rv_edit_recipe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"/>
