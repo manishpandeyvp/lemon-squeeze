@@ -1,12 +1,14 @@
 package com.example.lassi.activities
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.lassi.R
@@ -46,12 +48,17 @@ class JuiceAndShakeRecipeActivity : AppCompatActivity() {
 
         iv_recipe_back.setOnClickListener {
             onBackPressed()
+            finish()
         }
 
         iv_heart_empty.setOnClickListener {
-            Constants.user_data.likedJuices.add(mJuice.id)
-            like()
-            updateUserData()
+            if(FireStoreClass().getCurrentUserId().isNotEmpty()){
+                Constants.user_data.likedJuices.add(mJuice.id)
+                like()
+                updateUserData()
+            }else{
+                Toast.makeText(this, "Please sign in to like the recipe!", Toast.LENGTH_SHORT).show()
+            }
         }
 
         iv_heart_filled.setOnClickListener {
@@ -61,9 +68,13 @@ class JuiceAndShakeRecipeActivity : AppCompatActivity() {
         }
 
         iv_bookmark_empty.setOnClickListener {
-            Constants.user_data.savedList.add(mJuice.id)
-            save()
-            updateUserData()
+            if(FireStoreClass().getCurrentUserId().isNotEmpty()){
+                Constants.user_data.savedList.add(mJuice.id)
+                save()
+                updateUserData()
+            }else{
+                Toast.makeText(this, "Please sign in to save the recipe!", Toast.LENGTH_SHORT).show()
+            }
         }
 
         iv_bookmark_filled.setOnClickListener {
@@ -102,16 +113,21 @@ class JuiceAndShakeRecipeActivity : AppCompatActivity() {
 
         if(FireStoreClass().getCurrentUserId().isNotEmpty()){
             if (Constants.user_data.likedJuices.contains(mJuice.id)){
+                Log.i("Liked", Constants.user_data.likedJuices.toString())
                 like()
             }else{
                 unlike()
             }
 
             if (Constants.user_data.savedList.contains(mJuice.id)){
+                Log.i("Saved", Constants.user_data.savedList.toString())
                 save()
             }else{
                 unSave()
             }
+        }else{
+            unlike()
+            unSave()
         }
     }
 
@@ -133,6 +149,10 @@ class JuiceAndShakeRecipeActivity : AppCompatActivity() {
     private fun unSave(){
         iv_bookmark_empty.visibility = View.VISIBLE
         iv_bookmark_filled.visibility = View.GONE
+    }
+
+    override fun onStart() {
+        super.onStart()
     }
 
 }

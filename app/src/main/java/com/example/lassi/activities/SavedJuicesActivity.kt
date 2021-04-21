@@ -33,6 +33,7 @@ class SavedJuicesActivity : AppCompatActivity() {
 
         iv_saved_back.setOnClickListener {
             onBackPressed()
+            finish()
         }
 
         getSavedJuicesList()
@@ -71,10 +72,15 @@ class SavedJuicesActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        if(Constants.user_data.savedList.size>0){
-            getSavedJuicesList()
+        if(FireStoreClass().getCurrentUserId().isEmpty()){
+            startActivity(Intent(this@SavedJuicesActivity, OptionsDrawerActivity::class.java))
+            finish()
         }else{
-            updateJuiceAndShakesUI(ArrayList())
+            if(Constants.user_data.savedList.size>0){
+                getSavedJuicesList()
+            }else{
+                updateJuiceAndShakesUI(ArrayList())
+            }
         }
     }
 }
