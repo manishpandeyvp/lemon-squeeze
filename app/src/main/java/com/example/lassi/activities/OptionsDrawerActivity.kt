@@ -21,6 +21,7 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_options_drawer.*
 
 class OptionsDrawerActivity : AppCompatActivity() {
@@ -70,14 +71,24 @@ class OptionsDrawerActivity : AppCompatActivity() {
                 sign_out.visibility = View.GONE
             }
             Constants.user_data = User()
+            FirebaseAuth.getInstance().signOut()
+            Log.i("UserIdSignOut", FireStoreClass().getCurrentUserId())
         }
 
         iv_saved_recipe.setOnClickListener {
-            startActivity(Intent(this, SavedJuicesActivity::class.java))
+            if(FireStoreClass().getCurrentUserId().isNotEmpty()){
+                startActivity(Intent(this, SavedJuicesActivity::class.java))
+            }else{
+                Toast.makeText(this, "Please sign in first!", Toast.LENGTH_SHORT).show()
+            }
         }
 
         iv_liked_recipe.setOnClickListener {
-            startActivity(Intent(this, LikedJuicesActivity::class.java))
+            if(FireStoreClass().getCurrentUserId().isNotEmpty()){
+                startActivity(Intent(this, LikedJuicesActivity::class.java))
+            }else{
+                Toast.makeText(this, "Please sign in first", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
