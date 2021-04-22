@@ -95,7 +95,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="@string/lorem_ipsum"
+                android:text="Recipe Title"
                 android:textSize="28dp"
                 android:textStyle="bold"
                 android:paddingVertical="7dp"
@@ -114,7 +114,7 @@
             android:id="@+id/tv_recipe_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="@string/default_desc"
+            android:text="@string/default_desc"
             android:textSize="16dp"
             android:textColor="@color/text_desc_color"
             android:layout_marginTop="5dp"/>
