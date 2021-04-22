@@ -7,11 +7,12 @@ data class Juice (
     var id: String = "",
     var title: String = "",
     var image: String = "",
-    val desc: String = "",
+    var desc: String = "",
     var recipe: ArrayList<String> = ArrayList(),
     var popular: Boolean = true,
     var mood: ArrayList<String> = ArrayList(),
-    var ingredients: ArrayList<String> = ArrayList()
+    var ingredients: ArrayList<String> = ArrayList(),
+    var postedBy: String = ""
 ): Parcelable{
     constructor(parcel: Parcel) : this(
         parcel.readString()!!,
@@ -21,7 +22,8 @@ data class Juice (
         parcel.createStringArrayList()!!,
         parcel.readByte() != 0.toByte(),
         parcel.createStringArrayList()!!,
-        parcel.createStringArrayList()!!
+        parcel.createStringArrayList()!!,
+        parcel.readString()!!,
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -33,6 +35,7 @@ data class Juice (
         parcel.writeByte(if (popular) 1 else 0)
         parcel.writeStringList(mood)
         parcel.writeStringList(ingredients)
+        parcel.writeString(postedBy)
     }
 
     override fun describeContents(): Int {
