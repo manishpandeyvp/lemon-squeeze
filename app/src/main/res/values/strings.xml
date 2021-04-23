@@ -19,4 +19,5 @@
     <string name="rather_you_can_try_something_new_and_share_with_others">Rather you can try something new and share with others!</string>
     <string name="delete">Delete</string>
     <string name="ingredient">Ingredient</string>
+    <string name="add_recipe_step">Add Recipe Step</string>
 </resources>
