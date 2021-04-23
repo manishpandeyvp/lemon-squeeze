@@ -21,7 +21,10 @@ import com.bumptech.glide.Glide
 import com.example.lassi.R
 import com.example.lassi.adapters.AddedIngredientsItemsListAdapter
 import com.example.lassi.adapters.RecipeAdapter
+import com.example.lassi.firebase.FireStoreClass
 import com.example.lassi.utils.Constants
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.activity_post_your_recipe.*
 import kotlinx.android.synthetic.main.dialog_add_ingredient.*
 import kotlinx.android.synthetic.main.dialog_recipe_title_desc.*
@@ -34,7 +37,7 @@ import kotlin.collections.ArrayList
 class PostYourRecipeActivity : AppCompatActivity() {
 
     private var mSelectedImageFileUri : Uri? = null
-//    private var mJuice: Juice = Juice()
+    private var mRecipeImageUrl: String = ""
 
     companion object{
         const val RECIPE_ACTIVITY_REQUEST_CODE = 1
@@ -78,6 +81,10 @@ class PostYourRecipeActivity : AppCompatActivity() {
         iv_edit_recipe.setOnClickListener {
             val intent = Intent(this, EditRecipeActivity::class.java)
             startActivity(intent)
+        }
+
+        iv_post_your_recipe_done.setOnClickListener {
+            validateAndPost()
         }
     }
 
@@ -221,6 +228,74 @@ class PostYourRecipeActivity : AppCompatActivity() {
         super.onStart()
         if(Constants.POST_RECIPE.recipe.isNotEmpty()){
             updateRecipeListUI()
+        }
+        if(Constants.POST_RECIPE.ingredients.isNotEmpty()){
+            updateIngredientListUI(Constants.POST_RECIPE.ingredients)
+        }
+        if(!mSelectedImageFileUri.toString().isNullOrEmpty()){
+            Glide
+                .with(this)
+                .load(mSelectedImageFileUri).centerCrop()
+                .placeholder(R.drawable.ic_gallery)
+                .into(iv_juice_image_post)
+        }
+        if(Constants.POST_RECIPE.title.isNotEmpty() && Constants.POST_RECIPE.desc.isNotEmpty()){
+            tv_recipe_title.text = Constants.POST_RECIPE.title
+            tv_recipe_desc.text = Constants.POST_RECIPE.desc
+        }
+    }
+
+    private fun uploadRecipeImage(){
+        // show progress dialog
+        val sRef: StorageReference = FirebaseStorage.getInstance().reference.child(
+            "RECIPE_IMAGE" +
+                    System.currentTimeMillis() +
+                    "." +
+                    Constants.getFileExtension(this, mSelectedImageFileUri)
+        )
+
+        sRef.putFile(mSelectedImageFileUri!!).addOnSuccessListener {taskSnapshot ->
+            Log.e("Firebase Board URL", taskSnapshot.metadata!!.reference!!.downloadUrl.toString())
+
+            taskSnapshot.metadata!!.reference!!.downloadUrl.addOnSuccessListener {
+                    uri ->
+                Log.e("Downloadable Image URL", uri.toString())
+                mRecipeImageUrl = uri.toString()
+                postRecipe()
+            }
+        }.addOnFailureListener { exception ->
+            Toast.makeText(this, exception.message, Toast.LENGTH_SHORT).show()
+//                hideProgressDialog()
+        }
+    }
+
+    private fun postRecipe(){
+        Constants.POST_RECIPE.image = mRecipeImageUrl
+        FireStoreClass().postRecipe(this, Constants.POST_RECIPE)
+    }
+
+    fun recipePostedSuccessfully(){
+//        hideProgressDialog()
+        startActivity(Intent(this, OptionsDrawerActivity::class.java))
+        finish()
+    }
+
+    private fun validateAndPost(){
+        if(mSelectedImageFileUri.toString().isNotEmpty() &&
+            tv_recipe_title.text.toString().isNotEmpty() &&
+            tv_recipe_title.text.toString() != "Recipe Title" &&
+            tv_recipe_desc.text.toString().isNotEmpty() &&
+            tv_recipe_desc.text.toString() != "Describe your juice in few words." &&
+            Constants.POST_RECIPE.ingredients.isNotEmpty() &&
+            Constants.POST_RECIPE.recipe.isNotEmpty()){
+            if(mSelectedImageFileUri != null){
+                uploadRecipeImage()
+            } else {
+//                showProgressDialog(resources.getString(R.string.please_wait))
+                postRecipe()
+            }
+        }else{
+            Toast.makeText(this, "Please enter all the details before proceeding!", Toast.LENGTH_SHORT).show()
         }
     }
 }

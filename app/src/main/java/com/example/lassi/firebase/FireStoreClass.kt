@@ -2,6 +2,7 @@ package com.example.lassi.firebase
 
 import android.app.Activity
 import android.util.Log
+import android.widget.Toast
 import com.example.lassi.activities.*
 import com.example.lassi.models.Juice
 import com.example.lassi.models.User
@@ -105,6 +106,17 @@ class FireStoreClass {
             }
         }.addOnFailureListener { e ->
             Log.e(activity.javaClass.simpleName, "Error while updating user", e)
+        }
+    }
+
+    fun postRecipe(activity: PostYourRecipeActivity, mJuice: Juice){
+        mFireStore.collection(Constants.JUICE_AND_SHAKES).document().set(mJuice, SetOptions.merge()).addOnSuccessListener {
+            Log.e(activity.javaClass.simpleName, "Recipe Posted Successfully")
+            Toast.makeText(activity, "Recipe Posted Successfully!!", Toast.LENGTH_SHORT).show()
+            activity.recipePostedSuccessfully()
+        }.addOnFailureListener { exception ->
+//            activity.hideProgressDialog()
+            Log.e(activity.javaClass.simpleName, "Error while posting recipe", exception)
         }
     }
 
