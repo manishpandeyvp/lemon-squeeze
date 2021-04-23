@@ -48,19 +48,12 @@
                 android:layout_marginStart="15dp"/>
 
             <ImageView
-                android:id="@+id/iv_post_your_recipe_done_light"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:padding="10dp"
-                android:src="@drawable/ic_check_light"/>
-
-            <ImageView
-                android:id="@+id/iv_post_your_recipe_done_dark"
+                android:id="@+id/iv_post_your_recipe_done"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:padding="10dp"
                 android:src="@drawable/ic_check"
-                android:visibility="gone"/>
+                android:visibility="visible"/>
 
         </LinearLayout>
 

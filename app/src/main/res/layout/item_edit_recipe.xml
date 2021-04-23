@@ -13,12 +13,13 @@
 
     <TextView
         android:id="@+id/tv_edit_recipe_item"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:text="@string/default_desc"
         android:textSize="16dp"
-        android:padding="7dp"
+        android:padding="12dp"
+        android:layout_marginTop="7dp"
+        android:background="@drawable/recipe_item_background"
         android:textColor="@color/dark_green"/>
 
 </LinearLayout>

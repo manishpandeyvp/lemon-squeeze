@@ -3,14 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="9dp"
-    android:background="@color/light_green"
+    android:padding="12dp"
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/tv_add_recipe_step_head"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Recipe Step"
+        android:text="@string/add_recipe_step"
         android:textSize="21dp"
         android:textStyle="bold"
         android:textColor="@color/dark_green"/>
@@ -34,7 +34,7 @@
         android:gravity="end">
 
         <TextView
-            android:id="@+id/tv_ok"
+            android:id="@+id/tv_ok_add_recipe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="OK"
@@ -45,7 +45,7 @@
             android:layout_margin="4dp"/>
 
         <TextView
-            android:id="@+id/tv_cancel"
+            android:id="@+id/tv_cancel_add_recipe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cancel"

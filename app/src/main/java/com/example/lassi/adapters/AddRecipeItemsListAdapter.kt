@@ -6,34 +6,35 @@ import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lassi.R
-import kotlinx.android.synthetic.main.item_add_ingredient.view.*
+import kotlinx.android.synthetic.main.item_edit_recipe.view.*
 
-open class AddedIngredientsItemsListAdapter(
+class AddRecipeItemsListAdapter (
     private val context: Context,
     private val list: ArrayList<String>,
     private val assets: AssetManager
-): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+): RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
     private var onClickListener: OnClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return MyViewHolder(
-            LayoutInflater.from(context).inflate(R.layout.item_add_ingredient, parent, false)
+            LayoutInflater.from(context).inflate(R.layout.item_edit_recipe, parent, false)
         )
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val ingredient = list[position]
+        val recipe = list[position]
         if(holder is MyViewHolder){
-            holder.itemView.tv_ingredient_item.text = ingredient
+            holder.itemView.tv_edit_recipe_item.text = recipe
             val typeFaceRegular : Typeface = Typeface.createFromAsset(assets, "Quicksand-Regular.ttf")
-            holder.itemView.tv_ingredient_item.typeface = typeFaceRegular
+            holder.itemView.tv_edit_recipe_item.typeface = typeFaceRegular
 
-            holder.itemView.iv_delete_ingredient_item.setOnClickListener {
+            holder.itemView.iv_delete_recipe_item.setOnClickListener {
                 if(onClickListener != null){
-                    onClickListener!!.onClick(position, ingredient)
+                    onClickListener!!.onClick(position, recipe)
                 }
             }
 
