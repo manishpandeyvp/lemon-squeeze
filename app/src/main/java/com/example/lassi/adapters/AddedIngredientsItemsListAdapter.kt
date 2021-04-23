@@ -15,6 +15,9 @@ open class AddedIngredientsItemsListAdapter(
     private val list: ArrayList<String>,
     private val assets: AssetManager
 ): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    private var onClickListener: OnClickListener? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return MyViewHolder(
             LayoutInflater.from(context).inflate(R.layout.item_add_ingredient, parent, false)
@@ -26,13 +29,27 @@ open class AddedIngredientsItemsListAdapter(
         if(holder is MyViewHolder){
             holder.itemView.tv_ingredient_item.text = ingredient
             val typeFaceRegular : Typeface = Typeface.createFromAsset(assets, "Quicksand-Regular.ttf")
-            val typeFaceSemiBold : Typeface = Typeface.createFromAsset(assets, "Quicksand-SemiBold.ttf")
             holder.itemView.tv_ingredient_item.typeface = typeFaceRegular
+
+            holder.itemView.iv_delete_ingredient_item.setOnClickListener {
+                if(onClickListener != null){
+                    onClickListener!!.onClick(position, ingredient)
+                }
+            }
+
         }
     }
 
     override fun getItemCount(): Int {
         return list.size
+    }
+
+    interface OnClickListener{
+        fun onClick(position: Int, ingredient: String)
+    }
+
+    fun setOnClickListener(onClickListener: OnClickListener){
+        this.onClickListener = onClickListener
     }
 
     private class MyViewHolder(view: View): RecyclerView.ViewHolder(view)

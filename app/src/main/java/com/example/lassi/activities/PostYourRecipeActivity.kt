@@ -27,6 +27,8 @@ import kotlinx.android.synthetic.main.dialog_recipe_title_desc.*
 import kotlinx.android.synthetic.main.dialog_recipe_title_desc.tv_cancel
 import kotlinx.android.synthetic.main.dialog_recipe_title_desc.tv_ok
 import java.io.IOException
+import java.util.*
+import kotlin.collections.ArrayList
 
 class PostYourRecipeActivity : AppCompatActivity() {
 
@@ -164,9 +166,21 @@ class PostYourRecipeActivity : AppCompatActivity() {
 
         dialog.tv_ok_add_ingredient.setOnClickListener {
             if (dialog.et_add_ingredient.text.isNotEmpty()){
-                mJuice.ingredients.add(dialog.et_add_ingredient.text.toString())
-                updateIngredientListUI(mJuice.ingredients)
-                dialog.dismiss()
+                var temp = false
+                for (i in mJuice.ingredients) {
+                    if(i.toLowerCase(Locale.ROOT) == dialog.et_add_ingredient.text.toString().toLowerCase(Locale.ROOT)) {
+                        temp = true
+                        break
+                    }
+                }
+                if(temp){
+                    dialog.dismiss()
+                }else{
+                    mJuice.ingredients.add(dialog.et_add_ingredient.text.toString())
+                    updateIngredientListUI(mJuice.ingredients)
+                    dialog.dismiss()
+                }
+
             }else{
                 dialog.dismiss()
             }
@@ -183,5 +197,12 @@ class PostYourRecipeActivity : AppCompatActivity() {
         rv_ingredients.layoutManager = LinearLayoutManager(this)
         val adapter = AddedIngredientsItemsListAdapter(this, mIngredient, assets)
         rv_ingredients.adapter = adapter
+
+        adapter.setOnClickListener(object : AddedIngredientsItemsListAdapter.OnClickListener{
+            override fun onClick(position: Int, ingredient: String) {
+                mJuice.ingredients.remove(ingredient)
+                updateIngredientListUI(mJuice.ingredients)
+            }
+        })
     }
 }
