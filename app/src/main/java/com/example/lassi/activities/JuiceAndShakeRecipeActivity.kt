@@ -151,8 +151,4 @@ class JuiceAndShakeRecipeActivity : AppCompatActivity() {
         iv_bookmark_filled.visibility = View.GONE
     }
 
-    override fun onStart() {
-        super.onStart()
-    }
-
 }

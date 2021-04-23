@@ -1,20 +1,22 @@
 package com.example.lassi.activities
 
 import android.app.Dialog
+import android.content.Intent
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lassi.R
 import com.example.lassi.adapters.AddRecipeItemsListAdapter
+import com.example.lassi.utils.Constants
 import kotlinx.android.synthetic.main.activity_edit_recipe.*
 import kotlinx.android.synthetic.main.dialog_add_recipe.*
 import kotlin.collections.ArrayList
 
 class EditRecipeActivity : AppCompatActivity() {
-
 
     private var recipeSteps: ArrayList<String> = ArrayList()
 
@@ -33,6 +35,19 @@ class EditRecipeActivity : AppCompatActivity() {
         iv_add_recipe_item.setOnClickListener {
             showAddRecipeStepDialog()
         }
+
+        recipeSteps = Constants.POST_RECIPE.recipe
+        updateRecipeListUI(recipeSteps)
+
+        iv_done_editing_recipe.setOnClickListener {
+            val intent = Intent(this, PostYourRecipeActivity::class.java)
+            Constants.POST_RECIPE.recipe = recipeSteps
+            Log.i("RECIPE_LIST_EDIT", Constants.POST_RECIPE.recipe.toString())
+            startActivity(intent)
+            finish()
+        }
+
+
     }
 
     private fun showAddRecipeStepDialog(){
@@ -79,6 +94,5 @@ class EditRecipeActivity : AppCompatActivity() {
             }
         })
     }
-
 
 }

@@ -9,6 +9,7 @@ import android.graphics.Typeface
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.ImageView
@@ -19,7 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.lassi.R
 import com.example.lassi.adapters.AddedIngredientsItemsListAdapter
-import com.example.lassi.models.Juice
+import com.example.lassi.adapters.RecipeAdapter
 import com.example.lassi.utils.Constants
 import kotlinx.android.synthetic.main.activity_post_your_recipe.*
 import kotlinx.android.synthetic.main.dialog_add_ingredient.*
@@ -33,10 +34,11 @@ import kotlin.collections.ArrayList
 class PostYourRecipeActivity : AppCompatActivity() {
 
     private var mSelectedImageFileUri : Uri? = null
-    private var mJuice: Juice = Juice()
+//    private var mJuice: Juice = Juice()
 
     companion object{
         const val RECIPE_ACTIVITY_REQUEST_CODE = 1
+        const val RECIPE_LIST = ""
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,8 +77,7 @@ class PostYourRecipeActivity : AppCompatActivity() {
 
         iv_edit_recipe.setOnClickListener {
             val intent = Intent(this, EditRecipeActivity::class.java)
-            intent.putExtra(Constants.RECIPE_STEPS, mJuice.recipe)
-            startActivityForResult(intent, RECIPE_ACTIVITY_REQUEST_CODE)
+            startActivity(intent)
         }
     }
 
@@ -111,6 +112,10 @@ class PostYourRecipeActivity : AppCompatActivity() {
             }
 
         }
+        if(resultCode == Activity.RESULT_OK && requestCode == RECIPE_ACTIVITY_REQUEST_CODE && data!!.data != null){
+           val recipeList = data.getStringExtra(RECIPE_LIST)
+            Log.i("EditRecipeList", recipeList.toString())
+        }
     }
 
     private fun showEditTitleDescDialog(){
@@ -137,10 +142,10 @@ class PostYourRecipeActivity : AppCompatActivity() {
         dialog.setCanceledOnTouchOutside(false)
 
         dialog.tv_ok.setOnClickListener {
-            mJuice.title = dialog.et_edit_title.text.toString()
-            mJuice.desc = dialog.et_edit_desc.text.toString()
-            tv_recipe_title.text = mJuice.title
-            tv_recipe_desc.text = mJuice.desc
+            Constants.POST_RECIPE.title = dialog.et_edit_title.text.toString()
+            Constants.POST_RECIPE.desc = dialog.et_edit_desc.text.toString()
+            tv_recipe_title.text = Constants.POST_RECIPE.title
+            tv_recipe_desc.text = Constants.POST_RECIPE.desc
             dialog.dismiss()
         }
 
@@ -167,7 +172,7 @@ class PostYourRecipeActivity : AppCompatActivity() {
         dialog.tv_ok_add_ingredient.setOnClickListener {
             if (dialog.et_add_ingredient.text.isNotEmpty()){
                 var temp = false
-                for (i in mJuice.ingredients) {
+                for (i in Constants.POST_RECIPE.ingredients) {
                     if(i.toLowerCase(Locale.ROOT) == dialog.et_add_ingredient.text.toString().toLowerCase(Locale.ROOT)) {
                         temp = true
                         break
@@ -176,8 +181,8 @@ class PostYourRecipeActivity : AppCompatActivity() {
                 if(temp){
                     dialog.dismiss()
                 }else{
-                    mJuice.ingredients.add(dialog.et_add_ingredient.text.toString())
-                    updateIngredientListUI(mJuice.ingredients)
+                    Constants.POST_RECIPE.ingredients.add(dialog.et_add_ingredient.text.toString())
+                    updateIngredientListUI(Constants.POST_RECIPE.ingredients)
                     dialog.dismiss()
                 }
 
@@ -200,9 +205,22 @@ class PostYourRecipeActivity : AppCompatActivity() {
 
         adapter.setOnClickListener(object : AddedIngredientsItemsListAdapter.OnClickListener{
             override fun onClick(position: Int, ingredient: String) {
-                mJuice.ingredients.remove(ingredient)
-                updateIngredientListUI(mJuice.ingredients)
+                Constants.POST_RECIPE.ingredients.remove(ingredient)
+                updateIngredientListUI(Constants.POST_RECIPE.ingredients)
             }
         })
+    }
+
+    private fun updateRecipeListUI(){
+        rv_recipe.layoutManager = LinearLayoutManager(this)
+        val recipeAdapter = RecipeAdapter(this, Constants.POST_RECIPE.recipe, assets)
+        rv_recipe.adapter = recipeAdapter
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if(Constants.POST_RECIPE.recipe.isNotEmpty()){
+            updateRecipeListUI()
+        }
     }
 }

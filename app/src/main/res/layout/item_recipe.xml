@@ -13,14 +13,14 @@
         android:textStyle="bold"
         android:textSize="18dp"
         android:textColor="@color/dark_green"
-        android:layout_marginTop="3dp"/>
+        android:layout_marginTop="5dp"/>
 
     <TextView
         android:id="@+id/tv_recipe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/default_desc"
-        android:textSize="16dp"
+        android:textSize="18dp"
         android:textColor="@color/text_desc_color"
         android:layout_marginTop="5dp"/>
 
