@@ -18,6 +18,7 @@ object Constants {
     const val USERS = "users"
     var user_data: User = User()
     const val RECIPE_STEPS = ""
+    const val EDIT_RECIPE_STEPS = ""
 
     const val READ_STORAGE_PERMISSION_CODE = 1
     const val PICK_IMAGE_REQUEST_CODE = 2

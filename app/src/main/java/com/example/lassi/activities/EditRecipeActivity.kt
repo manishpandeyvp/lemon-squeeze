@@ -6,11 +6,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ViewGroup
 import android.view.WindowManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lassi.R
+import com.example.lassi.adapters.AddRecipeItemsListAdapter
 import kotlinx.android.synthetic.main.activity_edit_recipe.*
 import kotlinx.android.synthetic.main.dialog_add_recipe.*
+import kotlin.collections.ArrayList
 
 class EditRecipeActivity : AppCompatActivity() {
+
 
     private var recipeSteps: ArrayList<String> = ArrayList()
 
@@ -23,9 +27,7 @@ class EditRecipeActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
 
-        val typeFaceRegular : Typeface = Typeface.createFromAsset(assets, "Quicksand-Regular.ttf")
         val typeFaceBold : Typeface = Typeface.createFromAsset(assets, "Quicksand-Bold.ttf")
-        val typeFaceSemiBold : Typeface = Typeface.createFromAsset(assets, "Quicksand-SemiBold.ttf")
         tv_edit_recipe_title.typeface = typeFaceBold
 
         iv_add_recipe_item.setOnClickListener {
@@ -50,6 +52,7 @@ class EditRecipeActivity : AppCompatActivity() {
         dialog.tv_ok_add_recipe.setOnClickListener {
             if(dialog.et_recipe_step.text.toString().isNotEmpty()){
                 recipeSteps.add(dialog.et_recipe_step.text.toString())
+                updateRecipeListUI(recipeSteps)
                 dialog.dismiss()
             }else{
                 dialog.dismiss()
@@ -62,4 +65,20 @@ class EditRecipeActivity : AppCompatActivity() {
 
         dialog.show()
     }
+
+    private fun updateRecipeListUI(mRecipeList: ArrayList<String>){
+        rv_edit_recipe.layoutManager = LinearLayoutManager(this)
+        val adapter = AddRecipeItemsListAdapter(this, mRecipeList, assets)
+        rv_edit_recipe.setHasFixedSize(true)
+        rv_edit_recipe.adapter = adapter
+
+        adapter.setOnClickListener(object : AddRecipeItemsListAdapter.OnClickListener{
+            override fun onClick(position: Int, ingredient: String) {
+                recipeSteps.remove(ingredient)
+                updateRecipeListUI(recipeSteps)
+            }
+        })
+    }
+
+
 }
