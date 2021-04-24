@@ -10,6 +10,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.ImageView
@@ -64,6 +65,8 @@ class PostYourRecipeActivity : AppCompatActivity() {
         tv_recipe_desc.typeface = typeFaceRegular
         tv_ingredient.typeface = typeFaceSemiBold
         tv_recipe.typeface = typeFaceSemiBold
+
+        mJuice.postedBy = FireStoreClass().getCurrentUserId()
 
         iv_juice_image_post.setOnClickListener {
             if(ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
@@ -276,7 +279,7 @@ class PostYourRecipeActivity : AppCompatActivity() {
     // Validating and Uploading Data ***********************************************************
 
     private fun uploadRecipeImage(){
-        // show progress dialog
+        showProgressDialog()
         val sRef: StorageReference = FirebaseStorage.getInstance().reference.child(
             "RECIPE_IMAGE" +
                     System.currentTimeMillis() +
@@ -295,7 +298,7 @@ class PostYourRecipeActivity : AppCompatActivity() {
             }
         }.addOnFailureListener { exception ->
             Toast.makeText(this, exception.message, Toast.LENGTH_SHORT).show()
-//                hideProgressDialog()
+                hideProgressDialog()
         }
     }
 
@@ -305,8 +308,7 @@ class PostYourRecipeActivity : AppCompatActivity() {
     }
 
     fun recipePostedSuccessfully(){
-//        hideProgressDialog()
-//        startActivity(Intent(this, OptionsDrawerActivity::class.java))
+        hideProgressDialog()
         finish()
     }
 
@@ -328,4 +330,15 @@ class PostYourRecipeActivity : AppCompatActivity() {
 
     // Validating and Uploading Data ends *******************************************************
 
+    // Progress Dialogs ***********************************************************
+
+    private fun showProgressDialog(){
+        progress_circular.visibility = View.VISIBLE
+        iv_post_your_recipe_done.visibility = View.GONE
+    }
+
+    fun hideProgressDialog(){
+        progress_circular.visibility = View.GONE
+        iv_post_your_recipe_done.visibility = View.VISIBLE
+    }
 }

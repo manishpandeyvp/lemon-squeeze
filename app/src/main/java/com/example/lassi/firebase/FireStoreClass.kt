@@ -115,7 +115,7 @@ class FireStoreClass {
             Toast.makeText(activity, "Recipe Posted Successfully!!", Toast.LENGTH_SHORT).show()
             activity.recipePostedSuccessfully()
         }.addOnFailureListener { exception ->
-//            activity.hideProgressDialog()
+            activity.hideProgressDialog()
             Log.e(activity.javaClass.simpleName, "Error while posting recipe", exception)
         }
     }

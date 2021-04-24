@@ -93,6 +93,14 @@ class OptionsDrawerActivity : AppCompatActivity() {
                 Toast.makeText(this, "Please sign in first", Toast.LENGTH_SHORT).show()
             }
         }
+
+        iv_try_and_post.setOnClickListener {
+            if(FireStoreClass().getCurrentUserId().isNotEmpty()){
+                startActivity(Intent(this, PostYourRecipeActivity::class.java))
+            }else{
+                Toast.makeText(this, "Please sign in first", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private  fun signInGoogle(){
