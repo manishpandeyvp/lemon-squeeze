@@ -4,7 +4,6 @@ import android.content.Intent
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
@@ -75,7 +74,6 @@ class OptionsDrawerActivity : AppCompatActivity() {
             }
             Constants.user_data = User()
             FirebaseAuth.getInstance().signOut()
-            Log.i("UserIdSignOut", FireStoreClass().getCurrentUserId())
         }
 
         iv_saved_recipe.setOnClickListener {
@@ -89,6 +87,14 @@ class OptionsDrawerActivity : AppCompatActivity() {
         iv_liked_recipe.setOnClickListener {
             if(FireStoreClass().getCurrentUserId().isNotEmpty()){
                 startActivity(Intent(this, LikedJuicesActivity::class.java))
+            }else{
+                Toast.makeText(this, "Please sign in first", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        iv_try_and_post.setOnClickListener {
+            if(FireStoreClass().getCurrentUserId().isNotEmpty()){
+                startActivity(Intent(this, PostYourRecipeActivity::class.java))
             }else{
                 Toast.makeText(this, "Please sign in first", Toast.LENGTH_SHORT).show()
             }

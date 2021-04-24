@@ -55,6 +55,13 @@
                 android:src="@drawable/ic_check"
                 android:visibility="visible"/>
 
+            <ProgressBar
+                android:id="@+id/progress_circular"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:visibility="gone"/>
+
         </LinearLayout>
 
         <androidx.cardview.widget.CardView
@@ -142,6 +149,7 @@
             android:id="@+id/rv_ingredients"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:minHeight="80dp"
             android:layout_marginTop="10dp"/>
 
         <LinearLayout
@@ -162,11 +170,11 @@
                 android:textColor="@color/dark_green" />
 
             <ImageView
-                android:id="@+id/iv_edit_recipe"
+                android:id="@+id/iv_add_recipe_step"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:padding="10dp"
-                android:src="@drawable/ic_edit"/>
+                android:src="@drawable/ic_add"/>
 
         </LinearLayout>
 
@@ -174,6 +182,7 @@
             android:id="@+id/rv_recipe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:minHeight="80dp"
             android:layout_marginTop="10dp"/>
 
     </LinearLayout>

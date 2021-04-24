@@ -4,7 +4,6 @@ import android.content.Intent
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,7 +11,6 @@ import com.example.lassi.R
 import com.example.lassi.adapters.SearchedResultsAdapter
 import com.example.lassi.models.Juice
 import com.example.lassi.utils.Constants
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_search_results.*
 
 class SearchResultsActivity : AppCompatActivity() {
@@ -31,9 +29,6 @@ class SearchResultsActivity : AppCompatActivity() {
 
         mSearchedResults = intent.getParcelableArrayListExtra(Constants.SEARCHED_RESULTS)!!
         mSearchedString = intent.getStringExtra(Constants.SEARCHED_STRING)!!
-
-        Log.i("SearchedResult", mSearchedResults.toString())
-        Log.i("SearchedString", mSearchedString)
 
         val typeFaceRegular : Typeface = Typeface.createFromAsset(assets, "Quicksand-Regular.ttf")
         val typeFaceBold : Typeface = Typeface.createFromAsset(assets, "Quicksand-Bold.ttf")

@@ -6,7 +6,6 @@ import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -106,6 +105,7 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         checkUserSignedIn()
+        getJuiceAndShakesList()
     }
 
     private fun checkUserSignedIn(){
@@ -116,7 +116,6 @@ class MainActivity : AppCompatActivity() {
 
     fun updateUserData(mUserData: User){
         Constants.user_data = mUserData
-        Log.i("user_data", Constants.user_data.toString())
     }
 
     private fun getJuiceAndShakesList(){
@@ -172,16 +171,8 @@ class MainActivity : AppCompatActivity() {
     private fun searchJuices(s: String){
         mSearchedResult = ArrayList()
         for (i in mJuiceAndShakeList){
-            val list = i.title.split(" ")
-            if(s.toLowerCase(Locale.ROOT) == i.title.toLowerCase(Locale.ROOT)) {
+            if(i.title.toLowerCase(Locale.ROOT).contains(s.toLowerCase(Locale.ROOT))) {
                 mSearchedResult.add(i)
-            }
-            for (j in list){
-                if(s.toLowerCase(Locale.ROOT) == j.toLowerCase(Locale.ROOT)) {
-                    if(!mSearchedResult.contains(i)){
-                        mSearchedResult.add(i)
-                    }
-                }
             }
         }
     }
