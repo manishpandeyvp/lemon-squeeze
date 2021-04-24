@@ -162,11 +162,11 @@
                 android:textColor="@color/dark_green" />
 
             <ImageView
-                android:id="@+id/iv_edit_recipe"
+                android:id="@+id/iv_add_recipe_step"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:padding="10dp"
-                android:src="@drawable/ic_edit"/>
+                android:src="@drawable/ic_add"/>
 
         </LinearLayout>
 
