@@ -18,7 +18,6 @@ object Constants {
     const val GOOGLE_SIGN_IN_REQ_CODE : Int = 123
     const val USERS = "users"
     var user_data: User = User()
-    const val RECIPE_STEPS = ""
 
     const val READ_STORAGE_PERMISSION_CODE = 1
     const val PICK_IMAGE_REQUEST_CODE = 2

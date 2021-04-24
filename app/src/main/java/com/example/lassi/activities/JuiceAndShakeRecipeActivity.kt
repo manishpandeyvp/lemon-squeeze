@@ -1,11 +1,9 @@
 package com.example.lassi.activities
 
 import android.content.Context
-import android.content.Intent
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
@@ -33,7 +31,6 @@ class JuiceAndShakeRecipeActivity : AppCompatActivity() {
         )
 
         mJuice = intent.getParcelableExtra(Constants.RECIPE)!!
-        Log.i("JuiceShake mRecipe", mJuice.toString())
 
         val typeFaceRegular : Typeface = Typeface.createFromAsset(assets, "Quicksand-Regular.ttf")
         val typeFaceBold : Typeface = Typeface.createFromAsset(assets, "Quicksand-Bold.ttf")
@@ -89,7 +86,6 @@ class JuiceAndShakeRecipeActivity : AppCompatActivity() {
     }
 
     fun updateUserDataSuccess(){
-        Log.i("Updated", "Updated")
     }
 
     private fun updateUI(mJuice: Juice, context: Context){
@@ -113,14 +109,12 @@ class JuiceAndShakeRecipeActivity : AppCompatActivity() {
 
         if(FireStoreClass().getCurrentUserId().isNotEmpty()){
             if (Constants.user_data.likedJuices.contains(mJuice.id)){
-                Log.i("Liked", Constants.user_data.likedJuices.toString())
                 like()
             }else{
                 unlike()
             }
 
             if (Constants.user_data.savedList.contains(mJuice.id)){
-                Log.i("Saved", Constants.user_data.savedList.toString())
                 save()
             }else{
                 unSave()

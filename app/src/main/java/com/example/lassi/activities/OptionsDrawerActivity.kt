@@ -4,7 +4,6 @@ import android.content.Intent
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
@@ -75,7 +74,6 @@ class OptionsDrawerActivity : AppCompatActivity() {
             }
             Constants.user_data = User()
             FirebaseAuth.getInstance().signOut()
-            Log.i("UserIdSignOut", FireStoreClass().getCurrentUserId())
         }
 
         iv_saved_recipe.setOnClickListener {

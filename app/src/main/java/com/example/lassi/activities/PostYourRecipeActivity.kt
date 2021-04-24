@@ -9,7 +9,6 @@ import android.graphics.Typeface
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
@@ -131,7 +130,6 @@ class PostYourRecipeActivity : AppCompatActivity() {
         }
         if(resultCode == Activity.RESULT_OK && requestCode == RECIPE_ACTIVITY_REQUEST_CODE && data!!.data != null){
            val recipeList = data.getStringExtra(RECIPE_LIST)
-            Log.i("EditRecipeList", recipeList.toString())
         }
     }
 
@@ -293,11 +291,9 @@ class PostYourRecipeActivity : AppCompatActivity() {
         )
 
         sRef.putFile(mSelectedImageFileUri!!).addOnSuccessListener {taskSnapshot ->
-            Log.e("Firebase Board URL", taskSnapshot.metadata!!.reference!!.downloadUrl.toString())
 
             taskSnapshot.metadata!!.reference!!.downloadUrl.addOnSuccessListener {
                     uri ->
-                Log.e("Downloadable Image URL", uri.toString())
                 mRecipeImageUrl = uri.toString()
                 postRecipe()
             }

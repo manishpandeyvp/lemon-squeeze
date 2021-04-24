@@ -33,7 +33,6 @@ open class YouCanTryOptionsListAdapter(
                 .into(holder.itemView.iv_you_can_try_item)
             holder.itemView.tv_you_can_try_item.text = model.title
 
-            val typeFaceRegular : Typeface = Typeface.createFromAsset(assets, "Quicksand-Regular.ttf")
             val typeFaceSemiBold : Typeface = Typeface.createFromAsset(assets, "Quicksand-SemiBold.ttf")
             holder.itemView.tv_you_can_try_item.typeface = typeFaceSemiBold
 

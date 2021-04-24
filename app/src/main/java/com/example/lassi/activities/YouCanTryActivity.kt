@@ -4,7 +4,6 @@ import android.content.Intent
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -39,7 +38,6 @@ class YouCanTryActivity : AppCompatActivity() {
         tv_nothing_found.typeface = typeFaceRegular
 
         mSelectedIngredients = intent.getStringArrayListExtra(Constants.SELECTED_INGREDIENTS_OPTIONS)!!
-        Log.i("mSelectedIngredientsY", mSelectedIngredients.toString())
 
         getJuiceAndShakesList()
 
@@ -58,7 +56,6 @@ class YouCanTryActivity : AppCompatActivity() {
         if(juiceAndShakeList.size > 0) {
             mJuiceAndShakeList = juiceAndShakeList
             getAvailableOptions(mSelectedIngredients, mJuiceAndShakeList)
-            Log.i("AvailableOptions", mAvailableOptionsList.toString())
 
             if(mAvailableOptionsList.isNotEmpty()) {
                 gif_nothing_found.visibility = View.GONE
@@ -72,7 +69,6 @@ class YouCanTryActivity : AppCompatActivity() {
 
                 adapter.setOnClickListener(object : YouCanTryOptionsListAdapter.OnClickListener {
                     override fun onClick(position: Int, model: Juice) {
-                        Log.i("Recipe Id", model.id)
                         val intent = Intent(this@YouCanTryActivity, JuiceAndShakeRecipeActivity::class.java)
                         intent.putExtra(Constants.RECIPE, model)
                         startActivity(intent)
