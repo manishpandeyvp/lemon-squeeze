@@ -173,16 +173,8 @@ class MainActivity : AppCompatActivity() {
     private fun searchJuices(s: String){
         mSearchedResult = ArrayList()
         for (i in mJuiceAndShakeList){
-            val list = i.title.split(" ")
-            if(s.toLowerCase(Locale.ROOT) == i.title.toLowerCase(Locale.ROOT)) {
+            if(i.title.toLowerCase(Locale.ROOT).contains(s.toLowerCase(Locale.ROOT))) {
                 mSearchedResult.add(i)
-            }
-            for (j in list){
-                if(s.toLowerCase(Locale.ROOT) == j.toLowerCase(Locale.ROOT)) {
-                    if(!mSearchedResult.contains(i)){
-                        mSearchedResult.add(i)
-                    }
-                }
             }
         }
     }

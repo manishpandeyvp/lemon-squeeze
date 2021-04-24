@@ -30,6 +30,7 @@ import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.activity_post_your_recipe.*
 import kotlinx.android.synthetic.main.dialog_add_ingredient.*
 import kotlinx.android.synthetic.main.dialog_add_recipe.*
+import kotlinx.android.synthetic.main.dialog_back_alert.*
 import kotlinx.android.synthetic.main.dialog_recipe_title_desc.*
 import kotlinx.android.synthetic.main.dialog_recipe_title_desc.tv_cancel
 import kotlinx.android.synthetic.main.dialog_recipe_title_desc.tv_ok
@@ -90,6 +91,10 @@ class PostYourRecipeActivity : AppCompatActivity() {
 
         iv_post_your_recipe_done.setOnClickListener {
             validateAndPost()
+        }
+
+        iv_post_your_recipe_back.setOnClickListener {
+            showBackAlertDialog()
         }
     }
 
@@ -340,5 +345,32 @@ class PostYourRecipeActivity : AppCompatActivity() {
     fun hideProgressDialog(){
         progress_circular.visibility = View.GONE
         iv_post_your_recipe_done.visibility = View.VISIBLE
+    }
+
+    // Back Alert Dialog *********************************************************************
+
+    private fun showBackAlertDialog(){
+        val dialog = Dialog(this)
+        dialog.setContentView(R.layout.dialog_back_alert)
+        dialog.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+
+        val typeFaceRegular : Typeface = Typeface.createFromAsset(assets, "Quicksand-Regular.ttf")
+        val typeFaceSemiBold : Typeface = Typeface.createFromAsset(assets, "Quicksand-SemiBold.ttf")
+        dialog.tv_alert_head.typeface = typeFaceSemiBold
+        dialog.tv_alert_description.typeface = typeFaceRegular
+        dialog.tv_exit_post_recipe.typeface = typeFaceSemiBold
+        dialog.tv_cancel_exit_alert.typeface = typeFaceSemiBold
+
+        dialog.setCanceledOnTouchOutside(false)
+
+        dialog.tv_exit_post_recipe.setOnClickListener {
+            finish()
+        }
+
+        dialog.tv_cancel_exit_alert.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
 }
